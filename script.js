@@ -242,3 +242,197 @@ if (orderForm) {
 }
 
 updateCart();
+```javascript
+/* =========================================
+   PRODUCT DETAILS
+========================================= */
+
+let currentProduct = null;
+let detailsQuantity = 1;
+
+function openProductDetails(
+  name,
+  price,
+  oldPrice,
+  imageClass,
+  description,
+  sizes,
+  colors,
+  sizeId,
+  colorId
+) {
+
+  currentProduct = {
+    name: name,
+    price: price,
+    oldPrice: oldPrice,
+    imageClass: imageClass,
+    description: description,
+    sizes: sizes,
+    colors: colors,
+    sizeId: sizeId,
+    colorId: colorId
+  };
+
+  detailsQuantity = 1;
+
+  const detailsPage = document.getElementById("productDetails");
+
+  document.getElementById("detailsName").textContent = name;
+  document.getElementById("detailsPrice").textContent = price;
+  document.getElementById("detailsOldPrice").textContent =
+    "₹" + oldPrice;
+
+  document.getElementById("detailsDescription").textContent =
+    description;
+
+  const detailsPic = document.getElementById("detailsPic");
+
+  detailsPic.className = "details-pic " + imageClass;
+
+  const sizeSelect = document.getElementById("detailsSize");
+  const colorSelect = document.getElementById("detailsColor");
+
+  sizeSelect.innerHTML =
+    '<option value="">Select Size</option>';
+
+  colorSelect.innerHTML =
+    '<option value="">Select Colour</option>';
+
+  sizes.forEach(function(size) {
+    const option = document.createElement("option");
+    option.value = size;
+    option.textContent = size;
+    sizeSelect.appendChild(option);
+  });
+
+  colors.forEach(function(color) {
+    const option = document.createElement("option");
+    option.value = color;
+    option.textContent = color;
+    colorSelect.appendChild(option);
+  });
+
+  document.getElementById("detailsQuantity").textContent = "1";
+
+  detailsPage.classList.add("active");
+
+  document.body.classList.add("details-open");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeProductDetails() {
+
+  const detailsPage =
+    document.getElementById("productDetails");
+
+  detailsPage.classList.remove("active");
+
+  document.body.classList.remove("details-open");
+
+}
+
+
+function changeDetailsQuantity(amount) {
+
+  detailsQuantity += amount;
+
+  if (detailsQuantity < 1) {
+    detailsQuantity = 1;
+  }
+
+  if (detailsQuantity > 10) {
+    detailsQuantity = 10;
+  }
+
+  document.getElementById("detailsQuantity").textContent =
+    detailsQuantity;
+}
+
+
+function addDetailsProduct(buyNow = false) {
+
+  if (!currentProduct) {
+    return;
+  }
+
+  const size =
+    document.getElementById("detailsSize").value;
+
+  const color =
+    document.getElementById("detailsColor").value;
+
+  if (size === "") {
+    alert("Please select Size");
+    return;
+  }
+
+  if (color === "") {
+    alert("Please select Colour");
+    return;
+  }
+
+  const existingItem = cart.find(function(item) {
+
+    return (
+      item.name === currentProduct.name &&
+      item.size === size &&
+      item.color === color
+    );
+
+  });
+
+  if (existingItem) {
+
+    existingItem.quantity += detailsQuantity;
+
+  } else {
+
+    cart.push({
+      name: currentProduct.name,
+      price: currentProduct.price,
+      size: size,
+      color: color,
+      quantity: detailsQuantity
+    });
+
+  }
+
+  updateCart();
+
+  alert(
+    currentProduct.name +
+    " cart me " +
+    detailsQuantity +
+    " item add ho gaya!"
+  );
+
+  closeProductDetails();
+
+  if (buyNow) {
+
+    setTimeout(function() {
+
+      const orderBox =
+        document.querySelector(".order-box");
+
+      if (orderBox) {
+
+        orderBox.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }, 300);
+
+  }
+
+}
+```
+
