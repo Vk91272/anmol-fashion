@@ -3,32 +3,38 @@ const API_BASE = "https://anmol-fashion.onrender.com";
 let cart = [];
 
 function addProduct(name, price, sizeId, colorId) {
+  const sizeElement = document.getElementById(sizeId);
+  const colorElement = document.getElementById(colorId);
 
-  const size = document.getElementById(sizeId).value;
-  const color = document.getElementById(colorId).value;
+  if (!sizeElement || !colorElement) {
+    alert("Product option error. Please refresh the page.");
+    return;
+  }
 
-  if (!size) {
+  const size = sizeElement.value;
+  const color = colorElement.value;
+
+  if (size === "") {
     alert("Please select Size");
     return;
   }
 
-  if (!color) {
+  if (color === "") {
     alert("Please select Colour");
     return;
   }
 
-  const existingItem = cart.find(item =>
-    item.name === name &&
-    item.size === size &&
-    item.color === color
-  );
+  const existingItem = cart.find(function(item) {
+    return (
+      item.name === name &&
+      item.size === size &&
+      item.color === color
+    );
+  });
 
   if (existingItem) {
-
-    existingItem.quantity++;
-
+    existingItem.quantity += 1;
   } else {
-
     cart.push({
       name: name,
       price: price,
@@ -36,7 +42,6 @@ function addProduct(name, price, sizeId, colorId) {
       color: color,
       quantity: 1
     });
-
   }
 
   updateCart();
@@ -44,112 +49,78 @@ function addProduct(name, price, sizeId, colorId) {
   alert(name + " cart me add ho gaya!");
 }
 
-
 function increaseQuantity(index) {
-
-  cart[index].quantity++;
-
-  updateCart();
+  if (cart[index]) {
+    cart[index].quantity += 1;
+    updateCart();
+  }
 }
 
-
 function decreaseQuantity(index) {
+  if (!cart[index]) return;
 
   if (cart[index].quantity > 1) {
-
-    cart[index].quantity--;
-
+    cart[index].quantity -= 1;
   } else {
-
     cart.splice(index, 1);
-
   }
 
   updateCart();
 }
 
-
 function removeFromCart(index) {
-
   cart.splice(index, 1);
-
   updateCart();
 }
 
-
 function updateCart() {
+  const cartCount = document.getElementById("cartCount");
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
 
-  document.getElementById("cartCount").textContent =
-    cart.reduce((total, item) => total + item.quantity, 0);
+  if (!cartCount || !cartItems || !cartTotal) {
+    return;
+  }
 
-  const cartItems =
-    document.getElementById("cartItems");
+  const totalQuantity = cart.reduce(function(total, item) {
+    return total + item.quantity;
+  }, 0);
 
-  const cartTotal =
-    document.getElementById("cartTotal");
+  cartCount.textContent = totalQuantity;
 
   if (cart.length === 0) {
-
-    cartItems.innerHTML =
-      "<p>Your cart is empty.</p>";
-
+    cartItems.innerHTML = "<p>Your cart is empty.</p>";
     cartTotal.textContent = "0";
-
     return;
   }
 
   let total = 0;
 
-  cartItems.innerHTML = cart.map((item, index) => {
+  cartItems.innerHTML = cart.map(function(item, index) {
 
-    const itemTotal =
-      item.price * item.quantity;
-
+    const itemTotal = item.price * item.quantity;
     total += itemTotal;
 
     return `
       <div class="cart-item">
-
         <div>
-          <strong>${item.name}</strong>
-
-          <br>
-
-          Size: ${item.size}
-
-          <br>
-
-          Colour: ${item.color}
-
-          <br>
-
-          ₹${item.price} × ${item.quantity}
+          <strong>${item.name}</strong><br>
+          Size: ${item.size}<br>
+          Colour: ${item.color}<br>
+          Price: ₹${item.price}
         </div>
 
         <div>
-
-          <button
-            type="button"
-            onclick="decreaseQuantity(${index})">
-            −
-          </button>
+          <button type="button" onclick="decreaseQuantity(${index})">−</button>
 
           <b>${item.quantity}</b>
 
-          <button
-            type="button"
-            onclick="increaseQuantity(${index})">
-            +
-          </button>
+          <button type="button" onclick="increaseQuantity(${index})">+</button>
 
-          <button
-            type="button"
-            onclick="removeFromCart(${index})">
+          <button type="button" onclick="removeFromCart(${index})">
             Remove
           </button>
-
         </div>
-
       </div>
     `;
 
@@ -158,26 +129,24 @@ function updateCart() {
   cartTotal.textContent = total;
 }
 
-
 function toggleMenu() {
+  const nav = document.getElementById("nav");
 
-  document
-    .getElementById("nav")
-    .classList.toggle("show");
-
+  if (nav) {
+    nav.classList.toggle("show");
+  }
 }
 
+const orderForm = document.getElementById("orderForm");
 
-document
-  .getElementById("orderForm")
-  .addEventListener("submit", async function(event) {
+if (orderForm) {
+
+  orderForm.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
     if (cart.length === 0) {
-
       alert("Pehle product cart me add karein.");
-
       return;
     }
 
@@ -199,45 +168,27 @@ document
     const paymentMethod =
       document.getElementById("paymentMethod").value;
 
-    const total =
-      cart.reduce(
-        (sum, item) =>
-          sum + item.price * item.quantity,
-        0
-      );
+    const total = cart.reduce(function(sum, item) {
+      return sum + item.price * item.quantity;
+    }, 0);
 
-    const orderId =
-      "AF-" + Date.now();
+    const orderId = "AF-" + Date.now();
 
     const orderData = {
-
       order_id: orderId,
-
       customer_name: customerName,
-
       mobile: mobile,
-
       address: address,
-
       city: city,
-
       pincode: pincode,
-
       payment_method: paymentMethod,
-
       items: cart,
-
       total: total
-
     };
 
+    const message = document.getElementById("orderMessage");
 
-    const message =
-      document.getElementById("orderMessage");
-
-    message.textContent =
-      "Order submit ho raha hai...";
-
+    message.textContent = "Order submit ho raha hai...";
 
     try {
 
@@ -245,48 +196,35 @@ document
         API_BASE + "/api/orders",
         {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json"
           },
-
           body: JSON.stringify(orderData)
         }
       );
 
-
-      const result =
-        await response.json();
-
+      const result = await response.json();
 
       if (!response.ok) {
-
         throw new Error(
           result.error || "Order submit nahi hua"
         );
-
       }
-
 
       message.textContent =
         "✅ Order successfully place ho gaya! Order ID: " +
         orderId;
-
 
       alert(
         "Order successfully place ho gaya!\n\nOrder ID: " +
         orderId
       );
 
-
       cart = [];
 
       updateCart();
 
-      document
-        .getElementById("orderForm")
-        .reset();
-
+      orderForm.reset();
 
     } catch (error) {
 
@@ -298,10 +236,9 @@ document
       alert(
         "Order submit nahi hua. Please dobara try karein."
       );
-
     }
 
   });
-
+}
 
 updateCart();
