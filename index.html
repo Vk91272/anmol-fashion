@@ -1,425 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anmol Fashion | Style Jo Har Pal Saath De</title>
-  <meta name="description" content="Anmol Fashion - Trendy, comfortable and affordable fashion for everyone.">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header class="header">
-  <a class="logo" href="#home">
-    <span>♧</span>
-    <div>
-      <strong>Anmol Fashion</strong>
-      <small>Style Jo Har Pal Saath De</small>
-    </div>
-  </a>
-
-  <button class="menu" onclick="toggleMenu()">☰</button>
-
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#categories">Men</a>
-    <a href="#categories">Women</a>
-    <a href="#categories">Kids</a>
-    <a href="#products">New Arrivals</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="icons">
-    🛒 Cart <b id="cartCount">0</b>
-  </div>
-</header>
-
-<main>
-
-<section id="home" class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">WELCOME TO</p>
-    <h1>Anmol <span>Fashion</span></h1>
-    <h2>Style Jo Har Pal Saath De</h2>
-    <p>
-      Trendy, Comfortable & Affordable Fashion for Everyone.
-      Discover your perfect style at Anmol Fashion.
-    </p>
-    <a class="btn" href="#products">Shop Now →</a>
-  </div>
-</section>
-
-<section id="categories" class="section">
-  <div class="heading">
-    <p>EXPLORE</p>
-    <h2>Shop by Category</h2>
-    <span>Explore Our Latest Collection</span>
-  </div>
-
-  <div class="categories">
-    <a href="#products" class="cat men">
-      <b>Men</b><span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat women">
-      <b>Women</b><span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat kids">
-      <b>Kids</b><span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat new">
-      <b>New Arrivals</b><span>Shop Now →</span>
-    </a>
-  </div>
-</section>
-
-<section id="products" class="section products-section">
-
-  <div class="heading">
-    <p>BEST SELLERS • TOP QUALITY • GREAT PRICES</p>
-    <h2>Featured Products</h2>
-  </div>
-
-  <div class="products">
-
-    <!-- Men's Shirt -->
-    <article class="product">
-      <div class="pic p1"></div>
-      <h3>Men's Casual Shirt</h3>
-      <p>₹499 <del>₹799</del></p>
-
-      <select id="size-shirt">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-shirt">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>White</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
-        Add to Cart
-      </button>
-    </article>
-
-
-    <!-- Women's Kurti -->
-    <article class="product">
-      <div class="pic p2"></div>
-      <h3>Women's Kurti</h3>
-      <p>₹599 <del>₹999</del></p>
-
-      <select id="size-kurti">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-kurti">
-        <option value="">Select Colour</option>
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Pink</option>
-      </select>
-
-      <button onclick="addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
-        Add to Cart
-      </button>
-    </article>
-
-
-    <!-- Men's Jeans -->
-    <article class="product">
-      <div class="pic p3"></div>
-      <h3>Men's Jeans</h3>
-      <p>₹799 <del>₹1,299</del></p>
-
-      <select id="size-jeans">
-        <option value="">Select Size</option>
-        <option>28</option>
-        <option>30</option>
-        <option>32</option>
-        <option>34</option>
-        <option>36</option>
-        <option>38</option>
-      </select>
-
-      <select id="color-jeans">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Men’s Jeans',799,'size-jeans','color-jeans')">
-        Add to Cart
-      </button>
-    </article>
-
-
-    <!-- Women's Top -->
-    <article class="product">
-      <div class="pic p4"></div>
-      <h3>Women's Top</h3>
-      <p>₹499 <del>₹799</del></p>
-
-      <select id="size-top">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-top">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>White</option>
-        <option>Pink</option>
-      </select>
-
-      <button onclick="addProduct('Women’s Top',499,'size-top','color-top')">
-        Add to Cart
-      </button>
-    </article>
-
-
-    <!-- Kids T-Shirt -->
-    <article class="product">
-      <div class="pic p5"></div>
-      <h3>Kids T-Shirt</h3>
-      <p>₹399 <del>₹599</del></p>
-
-      <select id="size-kids-tshirt">
-        <option value="">Select Size</option>
-        <option>4Y</option>
-        <option>6Y</option>
-        <option>8Y</option>
-        <option>10Y</option>
-        <option>12Y</option>
-        <option>14Y</option>
-      </select>
-
-      <select id="color-kids-tshirt">
-        <option value="">Select Colour</option>
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Black</option>
-      </select>
-
-      <button onclick="addProduct('Kids T-Shirt',399,'size-kids-tshirt','color-kids-tshirt')">
-        Add to Cart
-      </button>
-    </article>
-
-
-    <!-- Kids Dress -->
-    <article class="product">
-      <div class="pic p6"></div>
-      <h3>Kids Dress</h3>
-      <p>₹599 <del>₹899</del></p>
-
-      <select id="size-kids-dress">
-        <option value="">Select Size</option>
-        <option>4Y</option>
-        <option>6Y</option>
-        <option>8Y</option>
-        <option>10Y</option>
-        <option>12Y</option>
-        <option>14Y</option>
-      </select>
-
-      <select id="color-kids-dress">
-        <option value="">Select Colour</option>
-        <option>Pink</option>
-        <option>Red</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Kids Dress',599,'size-kids-dress','color-kids-dress')">
-        Add to Cart
-      </button>
-    </article>
-
-  </div>
-
-
-  <!-- CART -->
-  <div class="order-box">
-
-    <h2>🛍️ Your Cart</h2>
-
-    <div id="cartItems">
-      <p>Your cart is empty.</p>
-    </div>
-
-    <h3>Total: ₹<span id="cartTotal">0</span></h3>
-
-    <hr>
-
-    <h2>📦 Place Your Order</h2>
-
-    <form id="orderForm">
-
-      <input
-        type="text"
-        id="customerName"
-        placeholder="Full Name"
-        required
-      >
-
-      <input
-        type="tel"
-        id="mobile"
-        placeholder="Mobile Number"
-        pattern="[0-9]{10}"
-        required
-      >
-
-      <textarea
-        id="address"
-        placeholder="Full Delivery Address"
-        required
-      ></textarea>
-
-      <input
-        type="text"
-        id="city"
-        placeholder="City"
-        required
-      >
-
-      <input
-        type="text"
-        id="pincode"
-        placeholder="Pincode"
-        pattern="[0-9]{6}"
-        required
-      >
-
-      <select id="paymentMethod" required>
-        <option value="">Select Payment Method</option>
-        <option value="COD">Cash on Delivery</option>
-        <option value="UPI">UPI Payment</option>
-      </select>
-
-      <button type="submit">
-        Place Order
-      </button>
-
-    </form>
-
-    <p id="orderMessage"></p>
-
-  </div>
-
-</section>
-
-
-<section class="services">
-  <div>🚚 <b>Free Shipping</b><small>On orders above ₹999</small></div>
-  <div>🛡️ <b>Secure Payments</b><small>100% Safe & Secure</small></div>
-  <div>↻ <b>Easy Returns</b><small>7 Days Return Policy</small></div>
-  <div>🎧 <b>24/7 Support</b><small>We're here to help</small></div>
-</section>
-
-
-<section id="about" class="about section">
-
-  <div>
-    <p class="eyebrow">ABOUT US</p>
-    <h2>Anmol Fashion</h2>
-
-    <p>
-      Anmol Fashion is your one-stop destination for the latest fashion
-      trends. We bring high-quality clothing for Men, Women and Kids
-      at the best prices.
-    </p>
-
-    <div class="chips">
-      <span>✦ Trendy Styles</span>
-      <span>♢ Premium Quality</span>
-      <span>₹ Affordable Prices</span>
-    </div>
-  </div>
-
-  <div>
-    <h2>Why Choose Us?</h2>
-
-    <p>
-      ✓ Latest Fashion Trends<br>
-      ✓ High Quality Products<br>
-      ✓ Best Prices & Great Offers<br>
-      ✓ Easy & Secure Shopping<br>
-      ✓ Dedicated Customer Support
-    </p>
-  </div>
-
-</section>
-
-
-<section id="contact" class="contact section">
-
-  <div class="heading">
-    <p>CONTACT</p>
-    <h2>Get In Touch</h2>
-  </div>
-
-  <div class="contact-card">
-
-    <p>📞 <b>+91 9118183794</b></p>
-
-    <p>
-      💬
-      <a href="https://wa.me/919118183794" target="_blank">
-        WhatsApp Us — Click to Chat
-      </a>
-    </p>
-
-    <p>
-      ✉️
-      <a href="mailto:yadavvinit416@gmail.com">
-        yadavvinit416@gmail.com
-      </a>
-    </p>
-
-    <p>
-      📍 Shop No. 12, Main Market, Uttar Pradesh
-    </p>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-  <div>
-    <strong>Anmol Fashion</strong>
-    <small>Style Jo Har Pal Saath De</small>
-  </div>
-
-  <p>© 2026 Anmol Fashion. All Rights Reserved.</p>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+```html
+<div class="products">
+
+  <!-- Men's Shirt -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Men’s Casual Shirt',
+      499,
+      799,
+      'p1',
+      'Comfortable and stylish casual shirt for men. Perfect for everyday wear, office and casual outings.',
+      ['S','M','L','XL','XXL'],
+      ['Black','White','Blue'],
+      'size-shirt',
+      'color-shirt'
+    )">
+
+    <div class="pic p1"></div>
+
+    <h3>Men's Casual Shirt</h3>
+    <p>₹499 <del>₹799</del></p>
+
+    <select id="size-shirt" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+    </select>
+
+    <select id="color-shirt" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Black</option>
+      <option>White</option>
+      <option>Blue</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
+      Add to Cart
+    </button>
+
+  </article>
+
+
+  <!-- Women's Kurti -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Women’s Kurti',
+      599,
+      999,
+      'p2',
+      'Beautiful and comfortable women’s kurti with a trendy design. Perfect for daily wear and special occasions.',
+      ['S','M','L','XL','XXL'],
+      ['Red','Blue','Pink'],
+      'size-kurti',
+      'color-kurti'
+    )">
+
+    <div class="pic p2"></div>
+
+    <h3>Women's Kurti</h3>
+    <p>₹599 <del>₹999</del></p>
+
+    <select id="size-kurti" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+    </select>
+
+    <select id="color-kurti" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Red</option>
+      <option>Blue</option>
+      <option>Pink</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
+      Add to Cart
+    </button>
+
+  </article>
+
+
+  <!-- Men's Jeans -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Men’s Jeans',
+      799,
+      1299,
+      'p3',
+      'Classic men’s jeans with a comfortable fit and stylish look. Suitable for casual and everyday wear.',
+      ['28','30','32','34','36','38'],
+      ['Black','Blue'],
+      'size-jeans',
+      'color-jeans'
+    )">
+
+    <div class="pic p3"></div>
+
+    <h3>Men's Jeans</h3>
+    <p>₹799 <del>₹1,299</del></p>
+
+    <select id="size-jeans" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>28</option>
+      <option>30</option>
+      <option>32</option>
+      <option>34</option>
+      <option>36</option>
+      <option>38</option>
+    </select>
+
+    <select id="color-jeans" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Black</option>
+      <option>Blue</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Men’s Jeans',799,'size-jeans','color-jeans')">
+      Add to Cart
+    </button>
+
+  </article>
+
+
+  <!-- Women's Top -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Women’s Top',
+      499,
+      799,
+      'p4',
+      'Trendy women’s top designed for comfort and style. Great for casual outings and everyday fashion.',
+      ['S','M','L','XL','XXL'],
+      ['Black','White','Pink'],
+      'size-top',
+      'color-top'
+    )">
+
+    <div class="pic p4"></div>
+
+    <h3>Women's Top</h3>
+    <p>₹499 <del>₹799</del></p>
+
+    <select id="size-top" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+    </select>
+
+    <select id="color-top" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Black</option>
+      <option>White</option>
+      <option>Pink</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Women’s Top',499,'size-top','color-top')">
+      Add to Cart
+    </button>
+
+  </article>
+
+
+  <!-- Kids T-Shirt -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Kids T-Shirt',
+      399,
+      599,
+      'p5',
+      'Comfortable and colourful kids T-shirt made for everyday fun, play and casual wear.',
+      ['4Y','6Y','8Y','10Y','12Y','14Y'],
+      ['Red','Blue','Black'],
+      'size-kids-tshirt',
+      'color-kids-tshirt'
+    )">
+
+    <div class="pic p5"></div>
+
+    <h3>Kids T-Shirt</h3>
+    <p>₹399 <del>₹599</del></p>
+
+    <select id="size-kids-tshirt" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>4Y</option>
+      <option>6Y</option>
+      <option>8Y</option>
+      <option>10Y</option>
+      <option>12Y</option>
+      <option>14Y</option>
+    </select>
+
+    <select id="color-kids-tshirt" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Red</option>
+      <option>Blue</option>
+      <option>Black</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Kids T-Shirt',399,'size-kids-tshirt','color-kids-tshirt')">
+      Add to Cart
+    </button>
+
+  </article>
+
+
+  <!-- Kids Dress -->
+  <article class="product"
+    onclick="openProductDetails(
+      'Kids Dress',
+      599,
+      899,
+      'p6',
+      'Cute and stylish kids dress designed for comfort. Perfect for parties, outings and special occasions.',
+      ['4Y','6Y','8Y','10Y','12Y','14Y'],
+      ['Pink','Red','Blue'],
+      'size-kids-dress',
+      'color-kids-dress'
+    )">
+
+    <div class="pic p6"></div>
+
+    <h3>Kids Dress</h3>
+    <p>₹599 <del>₹899</del></p>
+
+    <select id="size-kids-dress" onclick="event.stopPropagation()">
+      <option value="">Select Size</option>
+      <option>4Y</option>
+      <option>6Y</option>
+      <option>8Y</option>
+      <option>10Y</option>
+      <option>12Y</option>
+      <option>14Y</option>
+    </select>
+
+    <select id="color-kids-dress" onclick="event.stopPropagation()">
+      <option value="">Select Colour</option>
+      <option>Pink</option>
+      <option>Red</option>
+      <option>Blue</option>
+    </select>
+
+    <button
+      onclick="event.stopPropagation(); addProduct('Kids Dress',599,'size-kids-dress','color-kids-dress')">
+      Add to Cart
+    </button>
+
+  </article>
+
+</div>
+```
+
