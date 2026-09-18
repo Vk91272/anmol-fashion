@@ -86,71 +86,192 @@
 
   <div class="products">
 
+    <!-- Men's Shirt -->
     <article class="product">
       <div class="pic p1"></div>
       <h3>Men's Casual Shirt</h3>
       <p>₹499 <del>₹799</del></p>
-      <button onclick="addToCart('Men’s Casual Shirt',499)">
+
+      <select id="size-shirt">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+
+      <select id="color-shirt">
+        <option value="">Select Colour</option>
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+      </select>
+
+      <button onclick="addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
         Add to Cart
       </button>
     </article>
 
+
+    <!-- Women's Kurti -->
     <article class="product">
       <div class="pic p2"></div>
       <h3>Women's Kurti</h3>
       <p>₹599 <del>₹999</del></p>
-      <button onclick="addToCart('Women’s Kurti',599)">
+
+      <select id="size-kurti">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+
+      <select id="color-kurti">
+        <option value="">Select Colour</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Pink</option>
+      </select>
+
+      <button onclick="addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
         Add to Cart
       </button>
     </article>
 
+
+    <!-- Men's Jeans -->
     <article class="product">
       <div class="pic p3"></div>
       <h3>Men's Jeans</h3>
       <p>₹799 <del>₹1,299</del></p>
-      <button onclick="addToCart('Men’s Jeans',799)">
+
+      <select id="size-jeans">
+        <option value="">Select Size</option>
+        <option>28</option>
+        <option>30</option>
+        <option>32</option>
+        <option>34</option>
+        <option>36</option>
+        <option>38</option>
+      </select>
+
+      <select id="color-jeans">
+        <option value="">Select Colour</option>
+        <option>Black</option>
+        <option>Blue</option>
+      </select>
+
+      <button onclick="addProduct('Men’s Jeans',799,'size-jeans','color-jeans')">
         Add to Cart
       </button>
     </article>
 
+
+    <!-- Women's Top -->
     <article class="product">
       <div class="pic p4"></div>
       <h3>Women's Top</h3>
       <p>₹499 <del>₹799</del></p>
-      <button onclick="addToCart('Women’s Top',499)">
+
+      <select id="size-top">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+
+      <select id="color-top">
+        <option value="">Select Colour</option>
+        <option>Black</option>
+        <option>White</option>
+        <option>Pink</option>
+      </select>
+
+      <button onclick="addProduct('Women’s Top',499,'size-top','color-top')">
         Add to Cart
       </button>
     </article>
 
+
+    <!-- Kids T-Shirt -->
     <article class="product">
       <div class="pic p5"></div>
       <h3>Kids T-Shirt</h3>
       <p>₹399 <del>₹599</del></p>
-      <button onclick="addToCart('Kids T-Shirt',399)">
+
+      <select id="size-kids-tshirt">
+        <option value="">Select Size</option>
+        <option>4Y</option>
+        <option>6Y</option>
+        <option>8Y</option>
+        <option>10Y</option>
+        <option>12Y</option>
+        <option>14Y</option>
+      </select>
+
+      <select id="color-kids-tshirt">
+        <option value="">Select Colour</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Black</option>
+      </select>
+
+      <button onclick="addProduct('Kids T-Shirt',399,'size-kids-tshirt','color-kids-tshirt')">
         Add to Cart
       </button>
     </article>
 
+
+    <!-- Kids Dress -->
     <article class="product">
       <div class="pic p6"></div>
       <h3>Kids Dress</h3>
       <p>₹599 <del>₹899</del></p>
-      <button onclick="addToCart('Kids Dress',599)">
+
+      <select id="size-kids-dress">
+        <option value="">Select Size</option>
+        <option>4Y</option>
+        <option>6Y</option>
+        <option>8Y</option>
+        <option>10Y</option>
+        <option>12Y</option>
+        <option>14Y</option>
+      </select>
+
+      <select id="color-kids-dress">
+        <option value="">Select Colour</option>
+        <option>Pink</option>
+        <option>Red</option>
+        <option>Blue</option>
+      </select>
+
+      <button onclick="addProduct('Kids Dress',599,'size-kids-dress','color-kids-dress')">
         Add to Cart
       </button>
     </article>
 
   </div>
 
+
+  <!-- CART -->
   <div class="order-box">
 
-    <h2>🛍️ Place Your Order</h2>
+    <h2>🛍️ Your Cart</h2>
 
     <div id="cartItems">
       <p>Your cart is empty.</p>
     </div>
 
     <h3>Total: ₹<span id="cartTotal">0</span></h3>
+
+    <hr>
+
+    <h2>📦 Place Your Order</h2>
 
     <form id="orderForm">
 
@@ -208,12 +329,14 @@
 
 </section>
 
+
 <section class="services">
   <div>🚚 <b>Free Shipping</b><small>On orders above ₹999</small></div>
   <div>🛡️ <b>Secure Payments</b><small>100% Safe & Secure</small></div>
   <div>↻ <b>Easy Returns</b><small>7 Days Return Policy</small></div>
   <div>🎧 <b>24/7 Support</b><small>We're here to help</small></div>
 </section>
+
 
 <section id="about" class="about section">
 
@@ -236,6 +359,7 @@
 
   <div>
     <h2>Why Choose Us?</h2>
+
     <p>
       ✓ Latest Fashion Trends<br>
       ✓ High Quality Products<br>
@@ -247,6 +371,7 @@
 
 </section>
 
+
 <section id="contact" class="contact section">
 
   <div class="heading">
@@ -256,9 +381,7 @@
 
   <div class="contact-card">
 
-    <p>
-      📞 <b>+91 9118183794</b>
-    </p>
+    <p>📞 <b>+91 9118183794</b></p>
 
     <p>
       💬
@@ -284,13 +407,16 @@
 
 </main>
 
+
 <footer>
+
   <div>
     <strong>Anmol Fashion</strong>
     <small>Style Jo Har Pal Saath De</small>
   </div>
 
   <p>© 2026 Anmol Fashion. All Rights Reserved.</p>
+
 </footer>
 
 <script src="script.js"></script>
