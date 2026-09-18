@@ -1,265 +1,318 @@
 ```html
-<div class="products">
+<!-- =========================================
+     PROFESSIONAL PRODUCT DETAILS
+========================================= -->
 
-  <!-- Men's Shirt -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Men’s Casual Shirt',
-      499,
-      799,
-      'p1',
-      'Comfortable and stylish casual shirt for men. Perfect for everyday wear, office and casual outings.',
-      ['S','M','L','XL','XXL'],
-      ['Black','White','Blue'],
-      'size-shirt',
-      'color-shirt'
-    )">
+<section id="productDetails" class="product-details-page">
 
-    <div class="pic p1"></div>
-
-    <h3>Men's Casual Shirt</h3>
-    <p>₹499 <del>₹799</del></p>
-
-    <select id="size-shirt" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-      <option>XXL</option>
-    </select>
-
-    <select id="color-shirt" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Black</option>
-      <option>White</option>
-      <option>Blue</option>
-    </select>
-
-    <button
-      onclick="event.stopPropagation(); addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
-      Add to Cart
+  <div class="details-topbar">
+    <button class="back-btn" onclick="closeProductDetails()">
+      ← Back to Products
     </button>
 
-  </article>
+    <span>Anmol Fashion</span>
+  </div>
 
 
-  <!-- Women's Kurti -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Women’s Kurti',
-      599,
-      999,
-      'p2',
-      'Beautiful and comfortable women’s kurti with a trendy design. Perfect for daily wear and special occasions.',
-      ['S','M','L','XL','XXL'],
-      ['Red','Blue','Pink'],
-      'size-kurti',
-      'color-kurti'
-    )">
+  <div class="details-container">
 
-    <div class="pic p2"></div>
+    <!-- IMAGE AREA -->
 
-    <h3>Women's Kurti</h3>
-    <p>₹599 <del>₹999</del></p>
+    <div class="details-image-area">
 
-    <select id="size-kurti" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-      <option>XXL</option>
-    </select>
+      <div class="details-main-image">
+        <div id="detailsPic" class="details-pic"></div>
 
-    <select id="color-kurti" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Red</option>
-      <option>Blue</option>
-      <option>Pink</option>
-    </select>
+        <span class="sale-badge">
+          SALE
+        </span>
+      </div>
 
-    <button
-      onclick="event.stopPropagation(); addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
-      Add to Cart
-    </button>
+      <div class="image-thumbnails">
 
-  </article>
+        <button
+          class="thumb active"
+          onclick="changeProductImage(0)">
+          <div id="thumb0"></div>
+        </button>
 
+        <button
+          class="thumb"
+          onclick="changeProductImage(1)">
+          <div id="thumb1"></div>
+        </button>
 
-  <!-- Men's Jeans -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Men’s Jeans',
-      799,
-      1299,
-      'p3',
-      'Classic men’s jeans with a comfortable fit and stylish look. Suitable for casual and everyday wear.',
-      ['28','30','32','34','36','38'],
-      ['Black','Blue'],
-      'size-jeans',
-      'color-jeans'
-    )">
+        <button
+          class="thumb"
+          onclick="changeProductImage(2)">
+          <div id="thumb2"></div>
+        </button>
 
-    <div class="pic p3"></div>
+        <button
+          class="thumb"
+          onclick="changeProductImage(3)">
+          <div id="thumb3"></div>
+        </button>
 
-    <h3>Men's Jeans</h3>
-    <p>₹799 <del>₹1,299</del></p>
+      </div>
 
-    <select id="size-jeans" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>28</option>
-      <option>30</option>
-      <option>32</option>
-      <option>34</option>
-      <option>36</option>
-      <option>38</option>
-    </select>
-
-    <select id="color-jeans" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Black</option>
-      <option>Blue</option>
-    </select>
-
-    <button
-      onclick="event.stopPropagation(); addProduct('Men’s Jeans',799,'size-jeans','color-jeans')">
-      Add to Cart
-    </button>
-
-  </article>
+    </div>
 
 
-  <!-- Women's Top -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Women’s Top',
-      499,
-      799,
-      'p4',
-      'Trendy women’s top designed for comfort and style. Great for casual outings and everyday fashion.',
-      ['S','M','L','XL','XXL'],
-      ['Black','White','Pink'],
-      'size-top',
-      'color-top'
-    )">
+    <!-- PRODUCT INFORMATION -->
 
-    <div class="pic p4"></div>
+    <div class="details-info">
 
-    <h3>Women's Top</h3>
-    <p>₹499 <del>₹799</del></p>
+      <p class="details-category">
+        ANMOL FASHION • PREMIUM COLLECTION
+      </p>
 
-    <select id="size-top" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-      <option>XXL</option>
-    </select>
-
-    <select id="color-top" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Black</option>
-      <option>White</option>
-      <option>Pink</option>
-    </select>
-
-    <button
-      onclick="event.stopPropagation(); addProduct('Women’s Top',499,'size-top','color-top')">
-      Add to Cart
-    </button>
-
-  </article>
+      <h1 id="detailsName">
+        Product Name
+      </h1>
 
 
-  <!-- Kids T-Shirt -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Kids T-Shirt',
-      399,
-      599,
-      'p5',
-      'Comfortable and colourful kids T-shirt made for everyday fun, play and casual wear.',
-      ['4Y','6Y','8Y','10Y','12Y','14Y'],
-      ['Red','Blue','Black'],
-      'size-kids-tshirt',
-      'color-kids-tshirt'
-    )">
+      <div class="details-rating">
 
-    <div class="pic p5"></div>
+        <span class="stars">
+          ★★★★★
+        </span>
 
-    <h3>Kids T-Shirt</h3>
-    <p>₹399 <del>₹599</del></p>
+        <span>
+          4.8
+        </span>
 
-    <select id="size-kids-tshirt" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>4Y</option>
-      <option>6Y</option>
-      <option>8Y</option>
-      <option>10Y</option>
-      <option>12Y</option>
-      <option>14Y</option>
-    </select>
+        <span class="reviews">
+          124 Reviews
+        </span>
 
-    <select id="color-kids-tshirt" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Red</option>
-      <option>Blue</option>
-      <option>Black</option>
-    </select>
-
-    <button
-      onclick="event.stopPropagation(); addProduct('Kids T-Shirt',399,'size-kids-tshirt','color-kids-tshirt')">
-      Add to Cart
-    </button>
-
-  </article>
+      </div>
 
 
-  <!-- Kids Dress -->
-  <article class="product"
-    onclick="openProductDetails(
-      'Kids Dress',
-      599,
-      899,
-      'p6',
-      'Cute and stylish kids dress designed for comfort. Perfect for parties, outings and special occasions.',
-      ['4Y','6Y','8Y','10Y','12Y','14Y'],
-      ['Pink','Red','Blue'],
-      'size-kids-dress',
-      'color-kids-dress'
-    )">
+      <div class="details-price">
 
-    <div class="pic p6"></div>
+        <span>
+          ₹<span id="detailsPrice">0</span>
+        </span>
 
-    <h3>Kids Dress</h3>
-    <p>₹599 <del>₹899</del></p>
+        <del id="detailsOldPrice">
+          ₹0
+        </del>
 
-    <select id="size-kids-dress" onclick="event.stopPropagation()">
-      <option value="">Select Size</option>
-      <option>4Y</option>
-      <option>6Y</option>
-      <option>8Y</option>
-      <option>10Y</option>
-      <option>12Y</option>
-      <option>14Y</option>
-    </select>
+        <span class="discount">
+          SAVE
+        </span>
 
-    <select id="color-kids-dress" onclick="event.stopPropagation()">
-      <option value="">Select Colour</option>
-      <option>Pink</option>
-      <option>Red</option>
-      <option>Blue</option>
-    </select>
+      </div>
 
-    <button
-      onclick="event.stopPropagation(); addProduct('Kids Dress',599,'size-kids-dress','color-kids-dress')">
-      Add to Cart
-    </button>
 
-  </article>
+      <p class="tax-info">
+        Inclusive of all taxes
+      </p>
 
-</div>
+
+      <div class="details-divider"></div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div class="detail-section">
+
+        <h3>
+          Product Description
+        </h3>
+
+        <p id="detailsDescription">
+          Product description
+        </p>
+
+      </div>
+
+
+      <!-- SIZE -->
+
+      <div class="detail-section">
+
+        <div class="option-title">
+
+          <label>
+            Select Size
+          </label>
+
+          <a href="javascript:void(0)">
+            Size Guide
+          </a>
+
+        </div>
+
+        <select id="detailsSize">
+          <option value="">
+            Select Size
+          </option>
+        </select>
+
+      </div>
+
+
+      <!-- COLOUR -->
+
+      <div class="detail-section">
+
+        <label>
+          Select Colour
+        </label>
+
+        <select id="detailsColor">
+          <option value="">
+            Select Colour
+          </option>
+        </select>
+
+      </div>
+
+
+      <!-- QUANTITY -->
+
+      <div class="detail-section">
+
+        <label>
+          Quantity
+        </label>
+
+        <div class="quantity-box">
+
+          <button
+            type="button"
+            onclick="changeDetailsQuantity(-1)">
+            −
+          </button>
+
+          <span id="detailsQuantity">
+            1
+          </span>
+
+          <button
+            type="button"
+            onclick="changeDetailsQuantity(1)">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div class="details-buttons">
+
+        <button
+          class="details-cart-btn"
+          onclick="addDetailsProduct(false)">
+          🛒 Add to Cart
+        </button>
+
+        <button
+          class="details-buy-btn"
+          onclick="addDetailsProduct(true)">
+          ⚡ Buy Now
+        </button>
+
+      </div>
+
+
+      <!-- DELIVERY -->
+
+      <div class="delivery-box">
+
+        <div class="delivery-item">
+
+          <span>🚚</span>
+
+          <div>
+            <strong>
+              Fast Delivery
+            </strong>
+
+            <small>
+              Delivery available across India
+            </small>
+          </div>
+
+        </div>
+
+
+        <div class="delivery-item">
+
+          <span>↻</span>
+
+          <div>
+            <strong>
+              7 Days Easy Return
+            </strong>
+
+            <small>
+              Easy return on eligible products
+            </small>
+          </div>
+
+        </div>
+
+
+        <div class="delivery-item">
+
+          <span>🛡️</span>
+
+          <div>
+            <strong>
+              Secure Shopping
+            </strong>
+
+            <small>
+              Safe & secure order processing
+            </small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT HIGHLIGHTS -->
+
+      <div class="highlights">
+
+        <h3>
+          Product Highlights
+        </h3>
+
+        <ul>
+
+          <li>
+            ✓ Premium Quality Fabric
+          </li>
+
+          <li>
+            ✓ Comfortable for Everyday Wear
+          </li>
+
+          <li>
+            ✓ Trendy & Modern Design
+          </li>
+
+          <li>
+            ✓ Perfect for Casual & Special Occasions
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 ```
+
 
