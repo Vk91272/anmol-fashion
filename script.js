@@ -1,0 +1,1 @@
+let cart=0;function addToCart(){cart++;document.getElementById("cartCount").textContent=cart;alert("Product added to cart!");}function toggleMenu(){document.getElementById("nav").classList.toggle("show");}

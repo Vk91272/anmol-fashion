@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmol Fashion | Style Jo Har Pal Saath De</title>
+  <meta name="description" content="Anmol Fashion - Trendy, comfortable and affordable fashion for everyone.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="#home"><span>♧</span><div><strong>Anmol Fashion</strong><small>Style Jo Har Pal Saath De</small></div></a>
+  <button class="menu" onclick="toggleMenu()">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a><a href="#categories">Men</a><a href="#categories">Women</a>
+    <a href="#categories">Kids</a><a href="#products">New Arrivals</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="icons">⌕　♙　🛒 <b id="cartCount">0</b></div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">WELCOME TO</p>
+    <h1>Anmol <span>Fashion</span></h1>
+    <h2>Style Jo Har Pal Saath De</h2>
+    <p>Trendy, Comfortable & Affordable Fashion for Everyone. Discover your perfect style at Anmol Fashion.</p>
+    <a class="btn" href="#products">Shop Now →</a>
+  </div>
+</section>
+
+<section id="categories" class="section">
+  <div class="heading"><p>EXPLORE</p><h2>Shop by Category</h2><span>Explore Our Latest Collection</span></div>
+  <div class="categories">
+    <a href="#products" class="cat men"><b>Men</b><span>Shop Now →</span></a>
+    <a href="#products" class="cat women"><b>Women</b><span>Shop Now →</span></a>
+    <a href="#products" class="cat kids"><b>Kids</b><span>Shop Now →</span></a>
+    <a href="#products" class="cat new"><b>New Arrivals</b><span>Shop Now →</span></a>
+  </div>
+</section>
+
+<section id="products" class="section products-section">
+  <div class="heading"><p>BEST SELLERS • TOP QUALITY • GREAT PRICES</p><h2>Featured Products</h2></div>
+  <div class="products">
+    <article class="product"><div class="pic p1"></div><h3>Men's Casual Shirt</h3><p>₹499 <del>₹799</del></p><button onclick="addToCart()">Add to Cart</button></article>
+    <article class="product"><div class="pic p2"></div><h3>Women's Kurti</h3><p>₹599 <del>₹999</del></p><button onclick="addToCart()">Add to Cart</button></article>
+    <article class="product"><div class="pic p3"></div><h3>Men's Jeans</h3><p>₹799 <del>₹1,299</del></p><button onclick="addToCart()">Add to Cart</button></article>
+    <article class="product"><div class="pic p4"></div><h3>Women's Top</h3><p>₹499 <del>₹799</del></p><button onclick="addToCart()">Add to Cart</button></article>
+    <article class="product"><div class="pic p5"></div><h3>Kids T-Shirt</h3><p>₹399 <del>₹599</del></p><button onclick="addToCart()">Add to Cart</button></article>
+    <article class="product"><div class="pic p6"></div><h3>Kids Dress</h3><p>₹599 <del>₹899</del></p><button onclick="addToCart()">Add to Cart</button></article>
+  </div>
+</section>
+
+<section class="services">
+  <div>🚚 <b>Free Shipping</b><small>On orders above ₹999</small></div>
+  <div>🛡️ <b>Secure Payments</b><small>100% Safe & Secure</small></div>
+  <div>↻ <b>Easy Returns</b><small>7 Days Return Policy</small></div>
+  <div>🎧 <b>24/7 Support</b><small>We're here to help</small></div>
+</section>
+
+<section id="about" class="about section">
+  <div><p class="eyebrow">ABOUT US</p><h2>Anmol Fashion</h2>
+  <p>Anmol Fashion is your one-stop destination for the latest fashion trends. We bring high-quality clothing for Men, Women and Kids at the best prices.</p>
+  <div class="chips"><span>✦ Trendy Styles</span><span>♢ Premium Quality</span><span>₹ Affordable Prices</span></div></div>
+  <div><h2>Why Choose Us?</h2><p>✓ Latest Fashion Trends<br>✓ High Quality Products<br>✓ Best Prices & Great Offers<br>✓ Easy & Secure Shopping<br>✓ Dedicated Customer Support</p></div>
+</section>
+
+<section id="contact" class="contact section">
+  <div class="heading"><p>CONTACT</p><h2>Get In Touch</h2></div>
+  <div class="contact-card">
+    <p>📞 <b>+91 98765 43210</b></p>
+    <p>💬 <a href="https://wa.me/919876543210" target="_blank">WhatsApp Us — Click to Chat</a></p>
+    <p>✉️ <a href="mailto:yadavvinit416@gmail.com">yadavvinit416@gmail.com</a></p>
+    <p>📍 Shop No. 12, Main Market, Your City, Uttar Pradesh</p>
+  </div>
+</section>
+</main>
+
+<footer><div><strong>Anmol Fashion</strong><small>Style Jo Har Pal Saath De</small></div><p>© 2026 Anmol Fashion. All Rights Reserved.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
