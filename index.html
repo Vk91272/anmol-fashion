@@ -1,318 +1,155 @@
-```html
-<!-- =========================================
-     PROFESSIONAL PRODUCT DETAILS
-========================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmol Fashion | Style Jo Har Pal Saath De</title>
+  <meta name="description" content="Anmol Fashion - Trendy, comfortable and affordable fashion for everyone.">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<section id="productDetails" class="product-details-page">
+<body>
 
-  <div class="details-topbar">
-    <button class="back-btn" onclick="closeProductDetails()">
-      ← Back to Products
-    </button>
-
-    <span>Anmol Fashion</span>
-  </div>
-
-
-  <div class="details-container">
-
-    <!-- IMAGE AREA -->
-
-    <div class="details-image-area">
-
-      <div class="details-main-image">
-        <div id="detailsPic" class="details-pic"></div>
-
-        <span class="sale-badge">
-          SALE
-        </span>
-      </div>
-
-      <div class="image-thumbnails">
-
-        <button
-          class="thumb active"
-          onclick="changeProductImage(0)">
-          <div id="thumb0"></div>
-        </button>
-
-        <button
-          class="thumb"
-          onclick="changeProductImage(1)">
-          <div id="thumb1"></div>
-        </button>
-
-        <button
-          class="thumb"
-          onclick="changeProductImage(2)">
-          <div id="thumb2"></div>
-        </button>
-
-        <button
-          class="thumb"
-          onclick="changeProductImage(3)">
-          <div id="thumb3"></div>
-        </button>
-
-      </div>
-
+<header class="header">
+  <a class="logo" href="#home">
+    <span>♧</span>
+    <div>
+      <strong>Anmol Fashion</strong>
+      <small>Style Jo Har Pal Saath De</small>
     </div>
-
-
-    <!-- PRODUCT INFORMATION -->
-
-    <div class="details-info">
-
-      <p class="details-category">
-        ANMOL FASHION • PREMIUM COLLECTION
-      </p>
-
-      <h1 id="detailsName">
-        Product Name
-      </h1>
-
-
-      <div class="details-rating">
-
-        <span class="stars">
-          ★★★★★
-        </span>
-
-        <span>
-          4.8
-        </span>
-
-        <span class="reviews">
-          124 Reviews
-        </span>
-
-      </div>
-
-
-      <div class="details-price">
-
-        <span>
-          ₹<span id="detailsPrice">0</span>
-        </span>
-
-        <del id="detailsOldPrice">
-          ₹0
-        </del>
-
-        <span class="discount">
-          SAVE
-        </span>
-
-      </div>
-
-
-      <p class="tax-info">
-        Inclusive of all taxes
-      </p>
-
-
-      <div class="details-divider"></div>
-
-
-      <!-- DESCRIPTION -->
-
-      <div class="detail-section">
-
-        <h3>
-          Product Description
-        </h3>
-
-        <p id="detailsDescription">
-          Product description
-        </p>
-
-      </div>
-
-
-      <!-- SIZE -->
-
-      <div class="detail-section">
-
-        <div class="option-title">
-
-          <label>
-            Select Size
-          </label>
-
-          <a href="javascript:void(0)">
-            Size Guide
-          </a>
-
-        </div>
-
-        <select id="detailsSize">
-          <option value="">
-            Select Size
-          </option>
-        </select>
-
-      </div>
-
-
-      <!-- COLOUR -->
-
-      <div class="detail-section">
-
-        <label>
-          Select Colour
-        </label>
-
-        <select id="detailsColor">
-          <option value="">
-            Select Colour
-          </option>
-        </select>
-
-      </div>
-
-
-      <!-- QUANTITY -->
-
-      <div class="detail-section">
-
-        <label>
-          Quantity
-        </label>
-
-        <div class="quantity-box">
-
-          <button
-            type="button"
-            onclick="changeDetailsQuantity(-1)">
-            −
-          </button>
-
-          <span id="detailsQuantity">
-            1
-          </span>
-
-          <button
-            type="button"
-            onclick="changeDetailsQuantity(1)">
-            +
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- BUTTONS -->
-
-      <div class="details-buttons">
-
-        <button
-          class="details-cart-btn"
-          onclick="addDetailsProduct(false)">
-          🛒 Add to Cart
-        </button>
-
-        <button
-          class="details-buy-btn"
-          onclick="addDetailsProduct(true)">
-          ⚡ Buy Now
-        </button>
-
-      </div>
-
-
-      <!-- DELIVERY -->
-
-      <div class="delivery-box">
-
-        <div class="delivery-item">
-
-          <span>🚚</span>
-
-          <div>
-            <strong>
-              Fast Delivery
-            </strong>
-
-            <small>
-              Delivery available across India
-            </small>
-          </div>
-
-        </div>
-
-
-        <div class="delivery-item">
-
-          <span>↻</span>
-
-          <div>
-            <strong>
-              7 Days Easy Return
-            </strong>
-
-            <small>
-              Easy return on eligible products
-            </small>
-          </div>
-
-        </div>
-
-
-        <div class="delivery-item">
-
-          <span>🛡️</span>
-
-          <div>
-            <strong>
-              Secure Shopping
-            </strong>
-
-            <small>
-              Safe & secure order processing
-            </small>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- PRODUCT HIGHLIGHTS -->
-
-      <div class="highlights">
-
-        <h3>
-          Product Highlights
-        </h3>
-
-        <ul>
-
-          <li>
-            ✓ Premium Quality Fabric
-          </li>
-
-          <li>
-            ✓ Comfortable for Everyday Wear
-          </li>
-
-          <li>
-            ✓ Trendy & Modern Design
-          </li>
-
-          <li>
-            ✓ Perfect for Casual & Special Occasions
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
+  </a>
+
+  <button class="menu" onclick="toggleMenu()">☰</button>
+
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#categories">Men</a>
+    <a href="#categories">Women</a>
+    <a href="#categories">Kids</a>
+    <a href="#products">New Arrivals</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="icons">
+    🛒 Cart <b id="cartCount">0</b>
   </div>
+</header>
 
+<main>
+
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">WELCOME TO</p>
+    <h1>Anmol <span>Fashion</span></h1>
+    <h2>Style Jo Har Pal Saath De</h2>
+    <p>
+      Trendy, Comfortable & Affordable Fashion for Everyone.
+      Discover your perfect style at Anmol Fashion.
+    </p>
+    <a class="btn" href="#products">Shop Now →</a>
+  </div>
 </section>
-```
+
+<section id="categories" class="section">
+  <div class="heading">
+    <p>EXPLORE</p>
+    <h2>Shop by Category</h2>
+    <span>Explore Our Latest Collection</span>
+  </div>
+
+  <div class="categories">
+    <a href="#products" class="cat men">
+      <b>Men</b><span>Shop Now →</span>
+    </a>
+
+    <a href="#products" class="cat women">
+      <b>Women</b><span>Shop Now →</span>
+    </a>
+
+    <a href="#products" class="cat kids">
+      <b>Kids</b><span>Shop Now →</span>
+    </a>
+
+    <a href="#products" class="cat new">
+      <b>New Arrivals</b><span>Shop Now →</span>
+    </a>
+  </div>
+</section>
+
+<section id="products" class="section products-section">
+
+  <div class="heading">
+    <p>BEST SELLERS • TOP QUALITY • GREAT PRICES</p>
+    <h2>Featured Products</h2>
+  </div>
+
+  <div class="products">
+
+    <!-- Men's Shirt -->
+    <article class="product">
+      <div class="pic p1"></div>
+      <h3>Men's Casual Shirt</h3>
+      <p>₹499 <del>₹799</del></p>
+
+      <select id="size-shirt">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+
+      <select id="color-shirt">
+        <option value="">Select Colour</option>
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+      </select>
+
+      <button onclick="addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
+        Add to Cart
+      </button>
+    </article>
+
+
+    <!-- Women's Kurti -->
+    <article class="product">
+      <div class="pic p2"></div>
+      <h3>Women's Kurti</h3>
+      <p>₹599 <del>₹999</del></p>
+
+      <select id="size-kurti">
+        <option value="">Select Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
+      </select>
+
+      <select id="color-kurti">
+        <option value="">Select Colour</option>
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Pink</option>
+      </select>
+
+      <button onclick="addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
+        Add to Cart
+      </button>
+    </article>
+
+
+    <!-- Men's Jeans -->
+    <article class="product">
+      <div class="pic p3"></div>
+      <h3>Men's Jeans</h3>
+      <p>₹799 <del>₹1,299</del></p>
+
+      <select id="size-jeans">
+        <option value="">Select Size</option>
+        <option>28</option>
 
 
