@@ -1,600 +1,856 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Anmol Fashion | Style Jo Har Pal Saath De</title>
+  <title>Shyam Fincorp | Personal Loan</title>
 
-  <meta name="description"
-    content="Anmol Fashion - Trendy, comfortable and affordable fashion for everyone.">
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<header class="header">
-
-  <a class="logo" href="#home">
-    <span>♧</span>
-
-    <div>
-      <strong>Anmol Fashion</strong>
-      <small>Style Jo Har Pal Saath De</small>
-    </div>
-  </a>
-
-  <button class="menu" onclick="toggleMenu()">☰</button>
-
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#categories">Men</a>
-    <a href="#categories">Women</a>
-    <a href="#categories">Kids</a>
-    <a href="#products">New Arrivals</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="icons">
-    🛒 Cart <b id="cartCount">0</b>
-  </div>
-
-</header>
-
-
-<main>
-
-<!-- ================= HOME ================= -->
-
-<section id="home" class="hero">
-
-  <div class="hero-copy">
-
-    <p class="eyebrow">WELCOME TO</p>
-
-    <h1>
-      Anmol <span>Fashion</span>
-    </h1>
-
-    <h2>Style Jo Har Pal Saath De</h2>
-
-    <p>
-      Trendy, Comfortable & Affordable Fashion for Everyone.
-      Discover your perfect style at Anmol Fashion.
-    </p>
-
-    <a class="btn" href="#products">
-      Shop Now →
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- ================= CATEGORIES ================= -->
-
-<section id="categories" class="section">
-
-  <div class="heading">
-
-    <p>EXPLORE</p>
-
-    <h2>Shop by Category</h2>
-
-    <span>Explore Our Latest Collection</span>
-
-  </div>
-
-
-  <div class="categories">
-
-    <a href="#products" class="cat men">
-      <b>Men</b>
-      <span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat women">
-      <b>Women</b>
-      <span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat kids">
-      <b>Kids</b>
-      <span>Shop Now →</span>
-    </a>
-
-    <a href="#products" class="cat new">
-      <b>New Arrivals</b>
-      <span>Shop Now →</span>
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section id="products" class="section products-section">
-
-  <div class="heading">
-
-    <p>BEST SELLERS • TOP QUALITY • GREAT PRICES</p>
-
-    <h2>Featured Products</h2>
-
-  </div>
-
-
-  <div class="products">
-
-
-    <!-- PRODUCT 1 -->
-
-    <article class="product">
-
-      <div class="pic p1"></div>
-
-      <h3>Men's Casual Shirt</h3>
-
-      <p>
-        ₹499
-        <del>₹799</del>
-      </p>
-
-      <select id="size-shirt">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-shirt">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>White</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Men’s Casual Shirt',499,'size-shirt','color-shirt')">
-        Add to Cart
-      </button>
-
-    </article>
-
-
-    <!-- PRODUCT 2 -->
-
-    <article class="product">
-
-      <div class="pic p2"></div>
-
-      <h3>Women's Kurti</h3>
-
-      <p>
-        ₹599
-        <del>₹999</del>
-      </p>
-
-      <select id="size-kurti">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-kurti">
-        <option value="">Select Colour</option>
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Pink</option>
-      </select>
-
-      <button onclick="addProduct('Women’s Kurti',599,'size-kurti','color-kurti')">
-        Add to Cart
-      </button>
-
-    </article>
-
-
-    <!-- PRODUCT 3 -->
-
-    <article class="product">
-
-      <div class="pic p3"></div>
-
-      <h3>Men's Jeans</h3>
-
-      <p>
-        ₹799
-        <del>₹1,299</del>
-      </p>
-
-      <select id="size-jeans">
-        <option value="">Select Size</option>
-        <option>28</option>
-        <option>30</option>
-        <option>32</option>
-        <option>34</option>
-        <option>36</option>
-        <option>38</option>
-      </select>
-
-      <select id="color-jeans">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Men’s Jeans',799,'size-jeans','color-jeans')">
-        Add to Cart
-      </button>
-
-    </article>
-
-
-    <!-- PRODUCT 4 -->
-
-    <article class="product">
-
-      <div class="pic p4"></div>
-
-      <h3>Women's Top</h3>
-
-      <p>
-        ₹499
-        <del>₹799</del>
-      </p>
-
-      <select id="size-top">
-        <option value="">Select Size</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
-        <option>XXL</option>
-      </select>
-
-      <select id="color-top">
-        <option value="">Select Colour</option>
-        <option>Black</option>
-        <option>White</option>
-        <option>Pink</option>
-      </select>
-
-      <button onclick="addProduct('Women’s Top',499,'size-top','color-top')">
-        Add to Cart
-      </button>
-
-    </article>
-
-
-    <!-- PRODUCT 5 -->
-
-    <article class="product">
-
-      <div class="pic p5"></div>
-
-      <h3>Kids T-Shirt</h3>
-
-      <p>
-        ₹399
-        <del>₹599</del>
-      </p>
-
-      <select id="size-kids-tshirt">
-        <option value="">Select Size</option>
-        <option>4Y</option>
-        <option>6Y</option>
-        <option>8Y</option>
-        <option>10Y</option>
-        <option>12Y</option>
-        <option>14Y</option>
-      </select>
-
-      <select id="color-kids-tshirt">
-        <option value="">Select Colour</option>
-        <option>Red</option>
-        <option>Blue</option>
-        <option>Black</option>
-      </select>
-
-      <button onclick="addProduct('Kids T-Shirt',399,'size-kids-tshirt','color-kids-tshirt')">
-        Add to Cart
-      </button>
-
-    </article>
-
-
-    <!-- PRODUCT 6 -->
-
-    <article class="product">
-
-      <div class="pic p6"></div>
-
-      <h3>Kids Dress</h3>
-
-      <p>
-        ₹599
-        <del>₹899</del>
-      </p>
-
-      <select id="size-kids-dress">
-        <option value="">Select Size</option>
-        <option>4Y</option>
-        <option>6Y</option>
-        <option>8Y</option>
-        <option>10Y</option>
-        <option>12Y</option>
-        <option>14Y</option>
-      </select>
-
-      <select id="color-kids-dress">
-        <option value="">Select Colour</option>
-        <option>Pink</option>
-        <option>Red</option>
-        <option>Blue</option>
-      </select>
-
-      <button onclick="addProduct('Kids Dress',599,'size-kids-dress','color-kids-dress')">
-        Add to Cart
-      </button>
-
-    </article>
-
-  </div>
-
-
-  <!-- ================= CART ================= -->
-
-  <div class="order-box">
-
-    <h2>🛍️ Your Cart</h2>
-
-    <div id="cartItems">
-      <p>Your cart is empty.</p>
-    </div>
-
-    <h3>
-      Total: ₹<span id="cartTotal">0</span>
-    </h3>
-
-
-    <hr>
-
-
-    <!-- ================= ORDER FORM ================= -->
-
-    <h2>📦 Place Your Order</h2>
-
-    <form id="orderForm">
-
-      <input
-        type="text"
-        id="customerName"
-        placeholder="Full Name"
-        required
-      >
-
-      <input
-        type="tel"
-        id="mobile"
-        placeholder="Mobile Number"
-        pattern="[0-9]{10}"
-        required
-      >
-
-      <textarea
-        id="address"
-        placeholder="Full Delivery Address"
-        required
-      ></textarea>
-
-      <input
-        type="text"
-        id="city"
-        placeholder="City"
-        required
-      >
-
-      <input
-        type="text"
-        id="pincode"
-        placeholder="Pincode"
-        pattern="[0-9]{6}"
-        required
-      >
-
-      <select id="paymentMethod" required>
-
-        <option value="">
-          Select Payment Method
-        </option>
-
-        <option value="COD">
-          Cash on Delivery
-        </option>
-
-        <option value="UPI">
-          UPI Payment
-        </option>
-
-      </select>
-
-      <button type="submit">
-        Place Order
-      </button>
-
-    </form>
-
-    <p id="orderMessage"></p>
-
-  </div>
-
-</section>
-
-
-<!-- ================= SERVICES ================= -->
-
-<section class="services">
-
-  <div>
-    🚚
-    <b>Free Shipping</b>
-    <small>On orders above ₹999</small>
-  </div>
-
-  <div>
-    🛡️
-    <b>Secure Payments</b>
-    <small>100% Safe & Secure</small>
-  </div>
-
-  <div>
-    ↻
-    <b>Easy Returns</b>
-    <small>7 Days Return Policy</small>
-  </div>
-
-  <div>
-    🎧
-    <b>24/7 Support</b>
-    <small>We're here to help</small>
-  </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section id="about" class="about section">
-
-  <div>
-
-    <p class="eyebrow">
-      ABOUT US
-    </p>
-
-    <h2>
-      Anmol Fashion
-    </h2>
-
-    <p>
-      Anmol Fashion is your one-stop destination
-      for the latest fashion trends. We bring
-      high-quality clothing for Men, Women and Kids
-      at the best prices.
-    </p>
-
-    <div class="chips">
-
-      <span>✦ Trendy Styles</span>
-
-      <span>♢ Premium Quality</span>
-
-      <span>₹ Affordable Prices</span>
-
-    </div>
-
-  </div>
-
-
-  <div>
-
-    <h2>
-      Why Choose Us?
-    </h2>
-
-    <p>
-      ✓ Latest Fashion Trends<br>
-      ✓ High Quality Products<br>
-      ✓ Best Prices & Great Offers<br>
-      ✓ Easy & Secure Shopping<br>
-      ✓ Dedicated Customer Support
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact" class="contact section">
-
-  <div class="heading">
-
-    <p>CONTACT</p>
-
-    <h2>Get In Touch</h2>
-
-  </div>
-
-
-  <div class="contact-card">
-
-    <p>
-      📞 <b>+91 9118183794</b>
-    </p>
-
-    <p>
-      💬
-      <a
-        href="https://wa.me/919118183794"
-        target="_blank"
-      >
-        WhatsApp Us — Click to Chat
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <div>
+        <h1>Shyam Fincorp</h1>
+        <p>Simple • Fast • Transparent</p>
+      </div>
+
+      <a href="#eligibility" class="header-btn">
+        Check Loan
       </a>
-    </p>
 
-    <p>
-      ✉️
-      <a href="mailto:yadavvinit416@gmail.com">
-        yadavvinit416@gmail.com
-      </a>
-    </p>
-
-    <p>
-      📍 Shop No. 12, Main Market, Uttar Pradesh
-    </p>
-
-  </div>
-
-</section>
-
-</main>
+    </div>
+  </header>
 
 
-<!-- ================= FOOTER ================= -->
+  <main class="container">
 
-<footer>
+    <!-- HERO -->
+    <section class="card hero-card">
 
-  <div>
+      <div class="hero-content">
 
-    <strong>Anmol Fashion</strong>
+        <span class="hero-badge">
+          Personal Loan
+        </span>
 
-    <small>
-      Style Jo Har Pal Saath De
-    </small>
+        <h2>
+          Check Your Loan Eligibility
+        </h2>
 
-  </div>
+        <p>
+          Just enter a few details and get a
+          preliminary eligibility indication.
+        </p>
 
-  <p>
-    © 2026 Anmol Fashion. All Rights Reserved.
-  </p>
+        <a
+          href="#eligibility"
+          class="primary-btn hero-btn"
+        >
+          Check Eligibility
+        </a>
 
-</footer>
+      </div>
+
+    </section>
 
 
-<script src="script.js"></script>
+    <!-- ELIGIBILITY -->
+    <section
+      id="eligibility"
+      class="card"
+    >
+
+      <div class="section-heading">
+
+        <h2>Loan Eligibility</h2>
+
+        <p>
+          Complete these 3 simple steps.
+        </p>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+      <div class="progress-wrapper">
+
+        <div class="progress-line">
+          <span id="progressBar"></span>
+        </div>
+
+        <div class="progress-steps">
+
+          <div
+            class="progress-step active"
+            id="stepIndicator1"
+          >
+            <span>1</span>
+            <small>Basic</small>
+          </div>
+
+          <div
+            class="progress-step"
+            id="stepIndicator2"
+          >
+            <span>2</span>
+            <small>Loan</small>
+          </div>
+
+          <div
+            class="progress-step"
+            id="stepIndicator3"
+          >
+            <span>3</span>
+            <small>Result</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <form id="eligibilityForm">
+
+
+        <!-- STEP 1 -->
+        <div
+          class="eligibility-step active"
+          id="eligibilityStep1"
+        >
+
+          <h3>Tell us about yourself</h3>
+
+          <p class="step-note">
+            Enter your basic details.
+          </p>
+
+
+          <div class="form-grid">
+
+            <div>
+
+              <label for="eligibilityName">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="eligibilityName"
+                name="full_name"
+                placeholder="Enter your name"
+                autocomplete="name"
+                required
+              />
+
+            </div>
+
+
+            <div>
+
+              <label for="eligibilityMobile">
+                Mobile Number
+              </label>
+
+              <input
+                type="tel"
+                id="eligibilityMobile"
+                name="mobile"
+                placeholder="10 digit mobile number"
+                inputmode="numeric"
+                maxlength="10"
+                autocomplete="tel"
+                required
+              />
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="primary-btn next-btn"
+            id="nextStep1"
+          >
+            Continue
+          </button>
+
+        </div>
+
+
+        <!-- STEP 2 -->
+        <div
+          class="eligibility-step"
+          id="eligibilityStep2"
+        >
+
+          <h3>Loan details</h3>
+
+          <p class="step-note">
+            Tell us how much you need.
+          </p>
+
+
+          <div class="form-grid">
+
+            <div>
+
+              <label for="requestedAmount">
+                Required Loan Amount
+              </label>
+
+              <input
+                type="number"
+                id="requestedAmount"
+                name="requested_amount"
+                placeholder="Example: 200000"
+                min="1"
+                inputmode="numeric"
+                required
+              />
+
+            </div>
+
+
+            <div>
+
+              <label for="monthlyIncome">
+                Monthly Income
+              </label>
+
+              <input
+                type="number"
+                id="monthlyIncome"
+                name="monthly_income"
+                placeholder="Example: 30000"
+                min="1"
+                inputmode="numeric"
+                required
+              />
+
+            </div>
+
+
+            <div>
+
+              <label for="eligibilityTenure">
+                Loan Tenure
+              </label>
+
+              <select
+                id="eligibilityTenure"
+                name="tenure_months"
+                required
+              >
+
+                <option value="">
+                  Select tenure
+                </option>
+
+                <option value="12">
+                  12 Months
+                </option>
+
+                <option value="24">
+                  24 Months
+                </option>
+
+                <option value="36">
+                  36 Months
+                </option>
+
+                <option value="48">
+                  48 Months
+                </option>
+
+                <option value="60">
+                  60 Months
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div class="step-buttons">
+
+            <button
+              type="button"
+              class="secondary-btn"
+              id="backStep2"
+            >
+              Back
+            </button>
+
+            <button
+              type="submit"
+              class="primary-btn"
+              id="eligibilityButton"
+            >
+              Check Eligibility
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+        <div
+          class="eligibility-step"
+          id="eligibilityStep3"
+        >
+
+          <div
+            id="eligibilityResult"
+            class="eligibility-result"
+          >
+
+            <div class="result-icon">
+              ✓
+            </div>
+
+            <h3 id="eligibilityTitle">
+              Your Result
+            </h3>
+
+            <p id="eligibilityMessage"></p>
+
+
+            <div class="result-cards">
+
+              <div>
+                <small>Estimated EMI</small>
+
+                <strong>
+                  ₹<span id="estimatedEmi">0</span>
+                </strong>
+              </div>
+
+
+              <div>
+                <small>Interest Rate</small>
+
+                <strong>
+                  <span id="estimatedRate">0</span>%
+                </strong>
+              </div>
+
+
+              <div>
+                <small>Inquiry ID</small>
+
+                <strong id="inquiryId">
+                  -
+                </strong>
+              </div>
+
+            </div>
+
+
+            <a
+              href="#loanApplication"
+              class="primary-btn apply-now-btn"
+            >
+              Apply for Loan
+            </a>
+
+
+            <p class="disclaimer">
+              This is a preliminary eligibility indication only.
+              Final approval is subject to verification,
+              documentation and credit assessment.
+            </p>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- APPLICATION -->
+    <section
+      id="loanApplication"
+      class="card"
+    >
+
+      <div class="section-heading">
+
+        <h2>Apply for a Loan</h2>
+
+        <p>
+          Ready to apply? Complete your application.
+        </p>
+
+      </div>
+
+
+      <form id="loanApplicationForm">
+
+        <div class="form-grid">
+
+          <div>
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="full_name"
+              placeholder="Full name"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="mobile">
+              Mobile Number
+            </label>
+
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              placeholder="10 digit mobile number"
+              maxlength="10"
+              inputmode="numeric"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email address"
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="monthlyIncomeApplication">
+              Monthly Income
+            </label>
+
+            <input
+              type="number"
+              id="monthlyIncomeApplication"
+              name="monthly_income"
+              placeholder="Monthly income"
+              min="0"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="requestedAmountApplication">
+              Loan Amount
+            </label>
+
+            <input
+              type="number"
+              id="requestedAmountApplication"
+              name="requested_amount"
+              placeholder="Loan amount"
+              min="1"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="tenureApplication">
+              Tenure
+            </label>
+
+            <select
+              id="tenureApplication"
+              name="tenure_months"
+              required
+            >
+
+              <option value="">
+                Select tenure
+              </option>
+
+              <option value="12">
+                12 Months
+              </option>
+
+              <option value="24">
+                24 Months
+              </option>
+
+              <option value="36">
+                36 Months
+              </option>
+
+              <option value="48">
+                48 Months
+              </option>
+
+              <option value="60">
+                60 Months
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <label for="address">
+          Address
+        </label>
+
+        <textarea
+          id="address"
+          name="address"
+          placeholder="Complete address"
+          required
+        ></textarea>
+
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          Submit Application
+        </button>
+
+      </form>
+
+
+      <div
+        id="applicationResult"
+        class="result-box"
+        style="display:none;"
+      ></div>
+
+    </section>
+
+
+    <!-- CUSTOMER PORTAL -->
+    <section class="card customer-card">
+
+      <div class="section-heading">
+
+        <h2>My Loan</h2>
+
+        <p>
+          Existing customer? Check your EMI and payments.
+        </p>
+
+      </div>
+
+
+      <form id="lookupForm">
+
+        <div class="form-grid">
+
+          <div>
+
+            <label for="lookupMobile">
+              Registered Mobile
+            </label>
+
+            <input
+              type="tel"
+              id="lookupMobile"
+              placeholder="10 digit mobile number"
+              maxlength="10"
+              inputmode="numeric"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="lookupApplicationId">
+              Application ID
+            </label>
+
+            <input
+              type="text"
+              id="lookupApplicationId"
+              placeholder="SFL-XXXXXXXX"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          View My Loan
+        </button>
+
+      </form>
+
+
+      <div
+        id="lookupMessage"
+        class="message"
+      ></div>
+
+    </section>
+
+
+    <!-- LOAN SUMMARY -->
+    <section
+      id="loanSummarySection"
+      class="card"
+      style="display:none;"
+    >
+
+      <h2>My Loan Summary</h2>
+
+      <div class="summary-grid">
+
+        <div>
+          <span>Loan Account</span>
+          <strong id="loanAccountNo">-</strong>
+        </div>
+
+        <div>
+          <span>Principal</span>
+          <strong>
+            ₹<span id="loanPrincipal">0</span>
+          </strong>
+        </div>
+
+        <div>
+          <span>Interest</span>
+          <strong>
+            <span id="loanRate">0</span>%
+          </strong>
+        </div>
+
+        <div>
+          <span>Tenure</span>
+          <strong>
+            <span id="loanTenure">0</span> Months
+          </strong>
+        </div>
+
+        <div>
+          <span>EMI</span>
+          <strong>
+            ₹<span id="loanEmi">0</span>
+          </strong>
+        </div>
+
+        <div>
+          <span>Status</span>
+          <strong id="loanStatus">-</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EMI SCHEDULE -->
+    <section
+      id="emiScheduleSection"
+      class="card"
+      style="display:none;"
+    >
+
+      <h2>EMI Schedule</h2>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>EMI</th>
+              <th>Due Date</th>
+              <th>Principal</th>
+              <th>Interest</th>
+              <th>Total</th>
+              <th>Paid</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="emiTableBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section
+      id="paymentSection"
+      class="card"
+      style="display:none;"
+    >
+
+      <h2>Pay EMI</h2>
+
+      <p class="section-note">
+        Demo payment is currently enabled for testing.
+      </p>
+
+
+      <form id="paymentForm">
+
+        <div class="form-grid">
+
+          <div>
+
+            <label for="paymentAmount">
+              Amount
+            </label>
+
+            <input
+              type="number"
+              id="paymentAmount"
+              min="1"
+              required
+            />
+
+          </div>
+
+
+          <div>
+
+            <label for="paymentMethod">
+              Payment Method
+            </label>
+
+            <select id="paymentMethod">
+
+              <option value="demo">
+                Demo Payment
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          Pay EMI
+        </button>
+
+      </form>
+
+
+      <div
+        id="paymentMessage"
+        class="message"
+      ></div>
+
+    </section>
+
+
+    <!-- PAYMENT HISTORY -->
+    <section
+      id="paymentHistorySection"
+      class="card"
+      style="display:none;"
+    >
+
+      <h2>Payment History</h2>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Reference</th>
+              <th>Status</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="paymentHistoryBody"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <p>
+        © 2026 Shyam Fincorp
+      </p>
+
+      <p>
+        Eligibility results are preliminary and subject
+        to verification and final assessment.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script src="app.js"></script>
 
 </body>
 </html>
