@@ -446,6 +446,116 @@ function openProduct(id){
 
   window.currentDetailQty = 1;
 }
+function changeDetailQty(change){
+
+  if(!window.currentDetailQty){
+    window.currentDetailQty = 1;
+  }
+
+  window.currentDetailQty += change;
+
+  if(window.currentDetailQty < 1){
+    window.currentDetailQty = 1;
+  }
+
+  if(window.currentDetailQty > 10){
+    window.currentDetailQty = 10;
+  }
+
+  const qty = $("detailQty");
+
+  if(qty){
+    qty.textContent = window.currentDetailQty;
+  }
+}
+
+
+function addDetailedProduct(id){
+
+  const product = products.find(p => p.id === id);
+
+  if(!product) return;
+
+  const quantity = window.currentDetailQty || 1;
+
+  const existing = cart.find(item =>
+    item.id === id &&
+    item.size === selectedSize &&
+    item.color === selectedColor
+  );
+
+  if(existing){
+
+    existing.qty += quantity;
+
+  }else{
+
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: selectedSize,
+      color: selectedColor,
+      qty: quantity
+    });
+
+  }
+
+  saveData();
+  updateCounts();
+
+  closeModal("productModal");
+  openCart();
+}
+
+
+function buyDetailedProduct(id){
+
+  const product = products.find(p => p.id === id);
+
+  if(!product) return;
+
+  const quantity = window.currentDetailQty || 1;
+
+  cart = [{
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    image: product.image,
+    size: selectedSize,
+    color: selectedColor,
+    qty: quantity
+  }];
+
+  saveData();
+  updateCounts();
+
+  closeModal("productModal");
+  openCheckout();
+}
+
+
+function checkDelivery(){
+
+  const input = $("deliveryPincode");
+  const message = $("deliveryMessage");
+
+  if(!input || !message) return;
+
+  const pincode = input.value.trim();
+
+  if(!/^[0-9]{6}$/.test(pincode)){
+
+    message.textContent =
+      "Please enter a valid 6 digit pincode.";
+
+    return;
+  }
+
+  message.textContent =
+    "✓ Delivery available. Estimated delivery: 3–7 working days.";
+}
 
 
 
