@@ -229,7 +229,6 @@ function renderProducts(){
 
 
 /* ================= PRODUCT DETAIL ================= */
-
 function openProduct(id){
 
   const product =
@@ -237,8 +236,13 @@ function openProduct(id){
 
   if(!product) return;
 
-  selectedSize = product.sizes[1] || product.sizes[0];
-  selectedColor = product.colors[0];
+  selectedSize =
+    product.sizes[1] || product.sizes[0];
+
+  selectedColor =
+    product.colors[0];
+
+  let detailQty = 1;
 
   $("productDetails").innerHTML = `
 
@@ -253,6 +257,7 @@ function openProduct(id){
 
       </div>
 
+
       <div class="detail-info">
 
         <span class="eyebrow">
@@ -261,9 +266,12 @@ function openProduct(id){
 
         <h2>${product.name}</h2>
 
+
         <div class="detail-price">
 
-          <strong>${money(product.price)}</strong>
+          <strong>
+            ${money(product.price)}
+          </strong>
 
           <span class="old-price">
             ${money(product.oldPrice)}
@@ -271,10 +279,18 @@ function openProduct(id){
 
         </div>
 
-        <p>
-          Premium quality fashion designed for
-          comfort, confidence and everyday style.
+
+        <p class="detail-description">
+
+          Premium quality fashion designed
+          for comfort, confidence and everyday
+          style. Carefully selected fabric with
+          a modern fit for your everyday look.
+
         </p>
+
+
+        <!-- SIZE -->
 
         <div class="option-title">
           Select Size
@@ -296,6 +312,9 @@ function openProduct(id){
 
         </div>
 
+
+        <!-- COLOR -->
+
         <div class="option-title">
           Select Colour
         </div>
@@ -316,51 +335,118 @@ function openProduct(id){
 
         </div>
 
-        <button
-          class="add-cart"
-          onclick="addToCart(${product.id})">
 
-          ADD TO CART — ${money(product.price)}
+        <!-- QUANTITY -->
 
-        </button>
+        <div class="option-title">
+          Quantity
+        </div>
+
+        <div class="quantity-box">
+
+          <button
+            onclick="changeDetailQty(-1)">
+            −
+          </button>
+
+          <span id="detailQty">
+            ${detailQty}
+          </span>
+
+          <button
+            onclick="changeDetailQty(1)">
+            +
+          </button>
+
+        </div>
+
+
+        <!-- SHOPPING BUTTONS -->
+
+        <div class="detail-buttons">
+
+          <button
+            class="detail-add"
+            onclick="addDetailedProduct(${product.id})">
+
+            🛒 ADD TO CART
+
+          </button>
+
+
+          <button
+            class="detail-buy"
+            onclick="buyDetailedProduct(${product.id})">
+
+            ⚡ BUY NOW
+
+          </button>
+
+        </div>
+
+
+        <!-- DELIVERY -->
+
+        <div class="delivery-box">
+
+          <strong>
+            Check delivery availability
+          </strong>
+
+          <div class="delivery-check">
+
+            <input
+              id="deliveryPincode"
+              maxlength="6"
+              placeholder="Enter pincode"
+            >
+
+            <button
+              onclick="checkDelivery()">
+
+              CHECK
+
+            </button>
+
+          </div>
+
+          <small
+            id="deliveryMessage"
+            style="display:block;margin-top:8px;color:#777">
+
+          </small>
+
+        </div>
+
+
+        <!-- TRUST -->
+
+        <div class="product-trust">
+
+          <div>
+            🔒 Secure<br>Payment
+          </div>
+
+          <div>
+            🚚 Fast<br>Delivery
+          </div>
+
+          <div>
+            ↩ 7 Day<br>Returns
+          </div>
+
+        </div>
 
       </div>
 
     </div>
-
   `;
 
   $("productModal").classList.add("show");
 
+  window.currentDetailQty = 1;
 }
 
-
-function selectSize(button,size){
-
-  selectedSize = size;
-
-  button
-    .parentElement
-    .querySelectorAll("button")
-    .forEach(b => b.classList.remove("selected"));
-
-  button.classList.add("selected");
-
-}
-
-
-function selectColor(button,color){
-
-  selectedColor = color;
-
-  button
-    .parentElement
-    .querySelectorAll("button")
-    .forEach(b => b.classList.remove("selected"));
-
-  button.classList.add("selected");
-
-}
 
 
 /* ================= CART ================= */
