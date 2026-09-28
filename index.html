@@ -1,858 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shyam Fincorp | Personal Loan</title>
+  <title>Anmol Fashion | Premium Style</title>
+  <meta name="description" content="Anmol Fashion - Style Jo Har Pal Saath De">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
+<!-- ================= HEADER ================= -->
 
-      <div>
-        <h1>Shyam Fincorp</h1>
-        <p>Simple • Fast • Transparent</p>
-      </div>
+<header class="header">
 
-      <a href="#eligibility" class="header-btn">
-        Check Loan
-      </a>
+  <div class="topbar">
+    <div>Free Shipping on orders above ₹999</div>
+    <div>Easy Returns · Secure Payments</div>
+  </div>
+
+  <nav class="navbar">
+
+    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
+
+    <a href="#" class="logo" onclick="showHome()">
+      <span>ANMOL</span>
+      <small>FASHION</small>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#new">New Arrivals</a>
+      <a href="#men">Men</a>
+      <a href="#women">Women</a>
+      <a href="#kids">Kids</a>
+      <a href="#trending">Trending</a>
+    </div>
+
+    <div class="nav-actions">
+
+      <button onclick="openSearch()" title="Search">⌕</button>
+
+      <button onclick="openWishlist()" title="Wishlist">
+        ♡
+        <b id="wishlistCount">0</b>
+      </button>
+
+      <button onclick="openCart()" title="Cart">
+        🛍
+        <b id="cartCount">0</b>
+      </button>
 
     </div>
-  </header>
+
+  </nav>
+</header>
 
 
-  <main class="container">
+<!-- ================= SEARCH ================= -->
 
-    <!-- HERO -->
-    <section class="card hero-card">
+<div class="search-panel" id="searchPanel">
 
-      <div class="hero-content">
+  <div class="search-inner">
 
-        <span class="hero-badge">
-          Personal Loan
-        </span>
-
-        <h2>
-          Check Your Loan Eligibility
-        </h2>
-
-        <p>
-          Just enter a few details and get a
-          preliminary eligibility indication.
-        </p>
-
-        <a
-          href="#eligibility"
-          class="primary-btn hero-btn"
-        >
-          Check Eligibility
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- ELIGIBILITY -->
-    <section
-      id="eligibility"
-      class="card"
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search shirts, jeans, kurtis..."
+      oninput="searchProducts()"
     >
 
-      <div class="section-heading">
+    <button onclick="closeSearch()">×</button>
 
-        <h2>Loan Eligibility</h2>
+  </div>
 
-        <p>
-          Complete these 3 simple steps.
-        </p>
+  <div id="searchResults"></div>
 
-      </div>
+</div>
 
 
-      <!-- PROGRESS -->
-      <div class="progress-wrapper">
+<!-- ================= MAIN ================= -->
 
-        <div class="progress-line">
-          <span id="progressBar"></span>
-        </div>
+<main id="mainContent">
 
-        <div class="progress-steps">
 
-          <div
-            class="progress-step active"
-            id="stepIndicator1"
-          >
-            <span>1</span>
-            <small>Basic</small>
-          </div>
+<!-- HERO -->
 
-          <div
-            class="progress-step"
-            id="stepIndicator2"
-          >
-            <span>2</span>
-            <small>Loan</small>
-          </div>
+<section class="hero">
 
-          <div
-            class="progress-step"
-            id="stepIndicator3"
-          >
-            <span>3</span>
-            <small>Result</small>
-          </div>
+  <div class="hero-content">
 
-        </div>
+    <span class="eyebrow">THE NEW SEASON 2026</span>
 
-      </div>
+    <h1>
+      Style that<br>
+      <em>feels like you.</em>
+    </h1>
 
+    <p>
+      Discover thoughtfully designed fashion
+      for every moment of your life.
+    </p>
 
-      <form id="eligibilityForm">
+    <div class="hero-buttons">
+      <a href="#new" class="btn dark">Shop Collection</a>
+      <a href="#trending" class="btn light">Explore Trends</a>
+    </div>
 
+  </div>
 
-        <!-- STEP 1 -->
-        <div
-          class="eligibility-step active"
-          id="eligibilityStep1"
-        >
+  <div class="hero-image">
 
-          <h3>Tell us about yourself</h3>
-
-          <p class="step-note">
-            Enter your basic details.
-          </p>
-
-
-          <div class="form-grid">
-
-            <div>
-
-              <label for="eligibilityName">
-                Full Name
-              </label>
-
-              <input
-                type="text"
-                id="eligibilityName"
-                name="full_name"
-                placeholder="Enter your name"
-                autocomplete="name"
-                required
-              />
-
-            </div>
-
-
-            <div>
-
-              <label for="eligibilityMobile">
-                Mobile Number
-              </label>
-
-              <input
-                type="tel"
-                id="eligibilityMobile"
-                name="mobile"
-                placeholder="10 digit mobile number"
-                inputmode="numeric"
-                maxlength="10"
-                autocomplete="tel"
-                required
-              />
-
-            </div>
-
-          </div>
-
-
-          <button
-            type="button"
-            class="primary-btn next-btn"
-            id="nextStep1"
-          >
-            Continue
-          </button>
-
-        </div>
-
-
-        <!-- STEP 2 -->
-        <div
-          class="eligibility-step"
-          id="eligibilityStep2"
-        >
-
-          <h3>Loan details</h3>
-
-          <p class="step-note">
-            Tell us how much you need.
-          </p>
-
-
-          <div class="form-grid">
-
-            <div>
-
-              <label for="requestedAmount">
-                Required Loan Amount
-              </label>
-
-              <input
-                type="number"
-                id="requestedAmount"
-                name="requested_amount"
-                placeholder="Example: 200000"
-                min="1"
-                inputmode="numeric"
-                required
-              />
-
-            </div>
-
-
-            <div>
-
-              <label for="monthlyIncome">
-                Monthly Income
-              </label>
-
-              <input
-                type="number"
-                id="monthlyIncome"
-                name="monthly_income"
-                placeholder="Example: 30000"
-                min="1"
-                inputmode="numeric"
-                required
-              />
-
-            </div>
-
-
-            <div>
-
-              <label for="eligibilityTenure">
-                Loan Tenure
-              </label>
-
-              <select
-                id="eligibilityTenure"
-                name="tenure_months"
-                required
-              >
-
-                <option value="">
-                  Select tenure
-                </option>
-
-                <option value="12">
-                  12 Months
-                </option>
-
-                <option value="24">
-                  24 Months
-                </option>
-
-                <option value="36">
-                  36 Months
-                </option>
-
-                <option value="48">
-                  48 Months
-                </option>
-
-                <option value="60">
-                  60 Months
-                </option>
-
-              </select>
-
-            </div>
-
-          </div>
-
-
-          <div class="step-buttons">
-
-            <button
-              type="button"
-              class="secondary-btn"
-              id="backStep2"
-            >
-              Back
-            </button>
-
-            <button
-              type="submit"
-              class="primary-btn"
-              id="eligibilityButton"
-            >
-              Check Eligibility
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <!-- STEP 3 -->
-        <div
-          class="eligibility-step"
-          id="eligibilityStep3"
-        >
-
-          <div
-            id="eligibilityResult"
-            class="eligibility-result"
-          >
-
-            <div class="result-icon">
-              ✓
-            </div>
-
-            <h3 id="eligibilityTitle">
-              Your Result
-            </h3>
-
-            <p id="eligibilityMessage"></p>
-
-
-            <div class="result-cards">
-
-              <div>
-                <small>Estimated EMI</small>
-
-                <strong>
-                  ₹<span id="estimatedEmi">0</span>
-                </strong>
-              </div>
-
-
-              <div>
-                <small>Interest Rate</small>
-
-                <strong>
-                  <span id="estimatedRate">0</span>%
-                </strong>
-              </div>
-
-
-              <div>
-                <small>Inquiry ID</small>
-
-                <strong id="inquiryId">
-                  -
-                </strong>
-              </div>
-
-            </div>
-
-
-            <a
-              href="#loanApplication"
-              class="primary-btn apply-now-btn"
-            >
-              Apply for Loan
-            </a>
-
-
-            <p class="disclaimer">
-              This is a preliminary eligibility indication only.
-              Final approval is subject to verification,
-              documentation and credit assessment.
-            </p>
-
-          </div>
-
-        </div>
-
-      </form>
-
-    </section>
-
-
-    <!-- APPLICATION -->
-    <section
-      id="loanApplication"
-      class="card"
+    <img
+      src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+      alt="Anmol Fashion"
     >
 
-      <div class="section-heading">
+    <div class="hero-badge">
+      <span>ANMOL</span>
+      <strong>STYLE</strong>
+      <small>EST. 2026</small>
+    </div>
 
-        <h2>Apply for a Loan</h2>
+  </div>
 
-        <p>
-          Ready to apply? Complete your application.
-        </p>
+</section>
+
+
+<!-- CATEGORY STRIP -->
+
+<section class="category-strip">
+
+  <a href="#men">
+    <span>01</span>
+    MEN
+    <small>Explore Collection →</small>
+  </a>
+
+  <a href="#women">
+    <span>02</span>
+    WOMEN
+    <small>Explore Collection →</small>
+  </a>
+
+  <a href="#kids">
+    <span>03</span>
+    KIDS
+    <small>Explore Collection →</small>
+  </a>
+
+  <a href="#new">
+    <span>04</span>
+    NEW
+    <small>Explore Collection →</small>
+  </a>
+
+</section>
+
+
+<!-- NEW ARRIVALS -->
+
+<section class="section" id="new">
+
+  <div class="section-heading">
+
+    <div>
+      <span class="eyebrow">JUST DROPPED</span>
+      <h2>New Arrivals</h2>
+    </div>
+
+    <button onclick="filterCategory('all')">
+      View All →
+    </button>
+
+  </div>
+
+  <div class="product-grid" id="newProducts"></div>
+
+</section>
+
+
+<!-- EDITORIAL -->
+
+<section class="editorial">
+
+  <div class="editorial-image">
+    <img
+      src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85"
+      alt="Fashion Collection"
+    >
+  </div>
+
+  <div class="editorial-content">
+
+    <span class="eyebrow">ANMOL EDIT</span>
+
+    <h2>
+      Dress for the<br>
+      <em>life you want.</em>
+    </h2>
+
+    <p>
+      Fashion isn't just what you wear.
+      It's how you show up, how you feel,
+      and how you express yourself.
+    </p>
+
+    <a href="#women" class="text-btn">
+      Discover The Edit →
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- MEN -->
+
+<section class="section" id="men">
+
+  <div class="section-heading">
+
+    <div>
+      <span class="eyebrow">FOR HIM</span>
+      <h2>Men's Collection</h2>
+    </div>
+
+    <button onclick="filterCategory('Men')">
+      Shop Men →
+    </button>
+
+  </div>
+
+  <div class="product-grid" id="menProducts"></div>
+
+</section>
+
+
+<!-- WOMEN -->
+
+<section class="section soft" id="women">
+
+  <div class="section-heading">
+
+    <div>
+      <span class="eyebrow">FOR HER</span>
+      <h2>Women's Collection</h2>
+    </div>
+
+    <button onclick="filterCategory('Women')">
+      Shop Women →
+    </button>
+
+  </div>
+
+  <div class="product-grid" id="womenProducts"></div>
+
+</section>
+
+
+<!-- TRENDING -->
+
+<section class="trending" id="trending">
+
+  <div class="trending-text">
+
+    <span class="eyebrow">MOST LOVED</span>
+
+    <h2>
+      Trending<br>
+      <em>right now.</em>
+    </h2>
+
+    <p>
+      Pieces people are loving this season.
+      Find your next favourite.
+    </p>
+
+    <a href="#new" class="btn dark">Shop Trending</a>
+
+  </div>
+
+  <div class="trending-image">
+
+    <img
+      src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85"
+      alt="Trending Fashion"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- KIDS -->
+
+<section class="section" id="kids">
+
+  <div class="section-heading">
+
+    <div>
+      <span class="eyebrow">LITTLE STYLES</span>
+      <h2>Kids Collection</h2>
+    </div>
+
+    <button onclick="filterCategory('Kids')">
+      Shop Kids →
+    </button>
+
+  </div>
+
+  <div class="product-grid" id="kidsProducts"></div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+  <div>
+    <span>01</span>
+    <h3>Free Shipping</h3>
+    <p>On orders above ₹999</p>
+  </div>
+
+  <div>
+    <span>02</span>
+    <h3>Secure Payments</h3>
+    <p>100% secure checkout</p>
+  </div>
+
+  <div>
+    <span>03</span>
+    <h3>Easy Returns</h3>
+    <p>7 day return policy</p>
+  </div>
+
+  <div>
+    <span>04</span>
+    <h3>Support</h3>
+    <p>We're here 24/7</p>
+  </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+  <span class="eyebrow">STAY IN STYLE</span>
+
+  <h2>
+    Get the latest<br>
+    <em>from Anmol.</em>
+  </h2>
+
+  <p>
+    New drops, exclusive offers and fashion inspiration.
+  </p>
+
+  <form onsubmit="subscribe(event)">
+
+    <input
+      type="email"
+      id="newsletterEmail"
+      placeholder="Your email address"
+      required
+    >
+
+    <button>JOIN US →</button>
+
+  </form>
+
+</section>
+
+</main>
+
+
+<!-- ================= PRODUCT MODAL ================= -->
+
+<div class="modal" id="productModal">
+
+  <div class="modal-box product-modal">
+
+    <button class="modal-close" onclick="closeModal('productModal')">×</button>
+
+    <div id="productDetails"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
+
+<aside class="cart-drawer" id="cartDrawer">
+
+  <div class="drawer-header">
+
+    <div>
+      <span class="eyebrow">YOUR BAG</span>
+      <h2>Shopping Cart</h2>
+    </div>
+
+    <button onclick="closeCart()">×</button>
+
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-bottom">
+
+    <div class="subtotal">
+      <span>Subtotal</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+
+    <p>Shipping calculated at checkout.</p>
+
+    <button class="checkout-btn" onclick="openCheckout()">
+      CHECKOUT →
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<div class="modal" id="checkoutModal">
+
+  <div class="modal-box checkout-box">
+
+    <button class="modal-close" onclick="closeModal('checkoutModal')">×</button>
+
+    <span class="eyebrow">SECURE CHECKOUT</span>
+    <h2>Complete Your Order</h2>
+
+    <form onsubmit="placeOrder(event)" id="checkoutForm">
+
+      <div class="form-grid">
+
+        <input id="customerName" placeholder="Full Name" required>
+
+        <input
+          id="mobile"
+          placeholder="Mobile Number"
+          maxlength="10"
+          pattern="[0-9]{10}"
+          required
+        >
 
       </div>
 
+      <input id="email" type="email" placeholder="Email Address">
 
-      <form id="loanApplicationForm">
+      <textarea id="address" placeholder="Full Address" required></textarea>
 
-        <div class="form-grid">
+      <div class="form-grid">
 
-          <div>
+        <input id="city" placeholder="City" required>
 
-            <label for="fullName">
-              Full Name
-            </label>
+        <input
+          id="pincode"
+          placeholder="Pincode"
+          maxlength="6"
+          pattern="[0-9]{6}"
+          required
+        >
 
-            <input
-              type="text"
-              id="fullName"
-              name="full_name"
-              placeholder="Full name"
-              required
-            />
+      </div>
 
-          </div>
+      <div class="payment-options">
 
-
-          <div>
-
-            <label for="mobile">
-              Mobile Number
-            </label>
-
-            <input
-              type="tel"
-              id="mobile"
-              name="mobile"
-              placeholder="10 digit mobile number"
-              maxlength="10"
-              inputmode="numeric"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="email">
-              Email
-            </label>
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email address"
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="monthlyIncomeApplication">
-              Monthly Income
-            </label>
-
-            <input
-              type="number"
-              id="monthlyIncomeApplication"
-              name="monthly_income"
-              placeholder="Monthly income"
-              min="0"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="requestedAmountApplication">
-              Loan Amount
-            </label>
-
-            <input
-              type="number"
-              id="requestedAmountApplication"
-              name="requested_amount"
-              placeholder="Loan amount"
-              min="1"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="tenureApplication">
-              Tenure
-            </label>
-
-            <select
-              id="tenureApplication"
-              name="tenure_months"
-              required
-            >
-
-              <option value="">
-                Select tenure
-              </option>
-
-              <option value="12">
-                12 Months
-              </option>
-
-              <option value="24">
-                24 Months
-              </option>
-
-              <option value="36">
-                36 Months
-              </option>
-
-              <option value="48">
-                48 Months
-              </option>
-
-              <option value="60">
-                60 Months
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <label for="address">
-          Address
+        <label>
+          <input type="radio" name="paymentMethod" value="COD" checked>
+          <span>
+            <strong>Cash on Delivery</strong>
+            <small>Pay when your order arrives</small>
+          </span>
         </label>
 
-        <textarea
-          id="address"
-          name="address"
-          placeholder="Complete address"
-          required
-        ></textarea>
-
-
-        <button
-          type="submit"
-          class="primary-btn"
-        >
-          Submit Application
-        </button>
-
-      </form>
-
-
-      <div
-        id="applicationResult"
-        class="result-box"
-        style="display:none;"
-      ></div>
-
-    </section>
-
-
-    <!-- CUSTOMER PORTAL -->
-    <section class="card customer-card">
-
-      <div class="section-heading">
-
-        <h2>My Loan</h2>
-
-        <p>
-          Existing customer? Check your EMI and payments.
-        </p>
+        <label>
+          <input type="radio" name="paymentMethod" value="UPI">
+          <span>
+            <strong>UPI Payment</strong>
+            <small>Google Pay / PhonePe / Paytm</small>
+          </span>
+        </label>
 
       </div>
 
+      <button class="checkout-btn" type="submit">
+        PLACE ORDER →
+      </button>
 
-      <form id="lookupForm">
+    </form>
 
-        <div class="form-grid">
+  </div>
 
-          <div>
-
-            <label for="lookupMobile">
-              Registered Mobile
-            </label>
-
-            <input
-              type="tel"
-              id="lookupMobile"
-              placeholder="10 digit mobile number"
-              maxlength="10"
-              inputmode="numeric"
-              required
-            />
-
-          </div>
+</div>
 
 
-          <div>
+<!-- ================= FOOTER ================= -->
 
-            <label for="lookupApplicationId">
-              Application ID
-            </label>
+<footer>
 
-            <input
-              type="text"
-              id="lookupApplicationId"
-              placeholder="SFL-XXXXXXXX"
-              required
-            />
+  <div class="footer-main">
 
-          </div>
+    <div class="footer-brand">
 
-        </div>
-
-
-        <button
-          type="submit"
-          class="primary-btn"
-        >
-          View My Loan
-        </button>
-
-      </form>
-
-
-      <div
-        id="lookupMessage"
-        class="message"
-      ></div>
-
-    </section>
-
-
-    <!-- LOAN SUMMARY -->
-    <section
-      id="loanSummarySection"
-      class="card"
-      style="display:none;"
-    >
-
-      <h2>My Loan Summary</h2>
-
-      <div class="summary-grid">
-
-        <div>
-          <span>Loan Account</span>
-          <strong id="loanAccountNo">-</strong>
-        </div>
-
-        <div>
-          <span>Principal</span>
-          <strong>
-            ₹<span id="loanPrincipal">0</span>
-          </strong>
-        </div>
-
-        <div>
-          <span>Interest</span>
-          <strong>
-            <span id="loanRate">0</span>%
-          </strong>
-        </div>
-
-        <div>
-          <span>Tenure</span>
-          <strong>
-            <span id="loanTenure">0</span> Months
-          </strong>
-        </div>
-
-        <div>
-          <span>EMI</span>
-          <strong>
-            ₹<span id="loanEmi">0</span>
-          </strong>
-        </div>
-
-        <div>
-          <span>Status</span>
-          <strong id="loanStatus">-</strong>
-        </div>
-
+      <div class="footer-logo">
+        ANMOL
+        <small>FASHION</small>
       </div>
 
-    </section>
-
-
-    <!-- EMI SCHEDULE -->
-    <section
-      id="emiScheduleSection"
-      class="card"
-      style="display:none;"
-    >
-
-      <h2>EMI Schedule</h2>
-
-      <div class="table-wrapper">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>EMI</th>
-              <th>Due Date</th>
-              <th>Principal</th>
-              <th>Interest</th>
-              <th>Total</th>
-              <th>Paid</th>
-              <th>Status</th>
-            </tr>
-
-          </thead>
-
-          <tbody id="emiTableBody"></tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-
-    <!-- PAYMENT -->
-    <section
-      id="paymentSection"
-      class="card"
-      style="display:none;"
-    >
-
-      <h2>Pay EMI</h2>
-
-      <p class="section-note">
-        Demo payment is currently enabled for testing.
-      </p>
-
-
-      <form id="paymentForm">
-
-        <div class="form-grid">
-
-          <div>
-
-            <label for="paymentAmount">
-              Amount
-            </label>
-
-            <input
-              type="number"
-              id="paymentAmount"
-              min="1"
-              required
-            />
-
-          </div>
-
-
-          <div>
-
-            <label for="paymentMethod">
-              Payment Method
-            </label>
-
-            <select id="paymentMethod">
-
-              <option value="demo">
-                Demo Payment
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="primary-btn"
-        >
-          Pay EMI
-        </button>
-
-      </form>
-
-
-      <div
-        id="paymentMessage"
-        class="message"
-      ></div>
-
-    </section>
-
-
-    <!-- PAYMENT HISTORY -->
-    <section
-      id="paymentHistorySection"
-      class="card"
-      style="display:none;"
-    >
-
-      <h2>Payment History</h2>
-
-      <div class="table-wrapper">
-
-        <table>
-
-          <thead>
-
-            <tr>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Method</th>
-              <th>Reference</th>
-              <th>Status</th>
-            </tr>
-
-          </thead>
-
-          <tbody id="paymentHistoryBody"></tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-
-    <div class="container">
+      <p>Style Jo Har Pal Saath De.</p>
 
       <p>
-        © 2026 Shyam Fincorp
-      </p>
-
-      <p>
-        Eligibility results are preliminary and subject
-        to verification and final assessment.
+        Premium fashion for Men, Women & Kids.
       </p>
 
     </div>
 
-  </footer>
+    <div>
+      <h4>SHOP</h4>
+      <a href="#men">Men</a>
+      <a href="#women">Women</a>
+      <a href="#kids">Kids</a>
+      <a href="#new">New Arrivals</a>
+    </div>
+
+    <div>
+      <h4>HELP</h4>
+      <a href="#">Contact Us</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div>
+      <h4>CONTACT</h4>
+      <a href="tel:+919118183794">+91 9118183794</a>
+      <a href="mailto:yadavvinit416@gmail.com">
+        yadavvinit416@gmail.com
+      </a>
+      <span>Gorakhpur, Uttar Pradesh</span>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Anmol Fashion. All Rights Reserved.</span>
+    <span>Made with ♥ for fashion lovers.</span>
+  </div>
+
+</footer>
 
 
-  <script src="app.js"></script>
+<!-- MOBILE NAV -->
+
+<div class="mobile-nav">
+
+  <button onclick="showHome()">⌂<small>Home</small></button>
+
+  <button onclick="openSearch()">⌕<small>Search</small></button>
+
+  <button onclick="openWishlist()">♡<small>Wishlist</small></button>
+
+  <button onclick="openCart()">🛍<small>Cart</small></button>
+
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
-
-
