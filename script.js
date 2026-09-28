@@ -1,246 +1,962 @@
 const API_BASE = "https://anmol-fashion.onrender.com";
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("anmol_cart") || "[]");
+let wishlist = JSON.parse(localStorage.getItem("anmol_wishlist") || "[]");
 
-function addProduct(name, price, sizeId, colorId) {
-  const sizeElement = document.getElementById(sizeId);
-  const colorElement = document.getElementById(colorId);
+let selectedSize = "M";
+let selectedColor = "Black";
 
-  if (!sizeElement || !colorElement) {
-    alert("Product option error. Please refresh the page.");
-    return;
+
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+  {
+    id:1,
+    name:"Men's Casual Shirt",
+    category:"Men",
+    price:499,
+    oldPrice:799,
+    tag:"Best Seller",
+    image:"https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=85",
+    sizes:["S","M","L","XL"],
+    colors:["Black","White","Blue"]
+  },
+
+  {
+    id:2,
+    name:"Women's Premium Kurti",
+    category:"Women",
+    price:599,
+    oldPrice:999,
+    tag:"New",
+    image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=85",
+    sizes:["S","M","L","XL"],
+    colors:["Black","Red","Cream"]
+  },
+
+  {
+    id:3,
+    name:"Men's Denim Jeans",
+    category:"Men",
+    price:799,
+    oldPrice:1299,
+    tag:"Trending",
+    image:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=700&q=85",
+    sizes:["30","32","34","36"],
+    colors:["Blue","Black"]
+  },
+
+  {
+    id:4,
+    name:"Women's Everyday Top",
+    category:"Women",
+    price:499,
+    oldPrice:799,
+    tag:"Popular",
+    image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=85",
+    sizes:["S","M","L","XL"],
+    colors:["White","Pink","Black"]
+  },
+
+  {
+    id:5,
+    name:"Kids Premium T-Shirt",
+    category:"Kids",
+    price:399,
+    oldPrice:599,
+    tag:"Kids",
+    image:"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=700&q=85",
+    sizes:["4Y","6Y","8Y","10Y"],
+    colors:["Blue","Yellow","White"]
+  },
+
+  {
+    id:6,
+    name:"Kids Party Dress",
+    category:"Kids",
+    price:599,
+    oldPrice:899,
+    tag:"New",
+    image:"https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=700&q=85",
+    sizes:["4Y","6Y","8Y","10Y"],
+    colors:["Pink","Red","White"]
   }
 
-  const size = sizeElement.value;
-  const color = colorElement.value;
+];
 
-  if (size === "") {
-    alert("Please select Size");
-    return;
+
+/* ================= HELPERS ================= */
+
+function money(value){
+
+  return "₹" + Number(value).toLocaleString("en-IN");
+
+}
+
+
+function saveData(){
+
+  localStorage.setItem(
+    "anmol_cart",
+    JSON.stringify(cart)
+  );
+
+  localStorage.setItem(
+    "anmol_wishlist",
+    JSON.stringify(wishlist)
+  );
+
+}
+
+
+function $(id){
+
+  return document.getElementById(id);
+
+}
+
+
+/* ================= PRODUCT CARD ================= */
+
+function productCard(product){
+
+  const liked = wishlist.includes(product.id);
+
+  return `
+
+    <article class="product-card"
+      onclick="openProduct(${product.id})">
+
+      <div class="product-image">
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+        >
+
+        <span class="product-tag">
+          ${product.tag}
+        </span>
+
+        <button
+          class="wishlist-btn"
+          onclick="event.stopPropagation(); toggleWishlist(${product.id})">
+
+          ${liked ? "♥" : "♡"}
+
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>${product.name}</h3>
+
+        <div class="product-category">
+          ${product.category}
+        </div>
+
+        <div class="price">
+
+          ${money(product.price)}
+
+          <span class="old-price">
+            ${money(product.oldPrice)}
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderProducts(){
+
+  const newBox = $("newProducts");
+  const menBox = $("menProducts");
+  const womenBox = $("womenProducts");
+  const kidsBox = $("kidsProducts");
+
+  if(newBox){
+
+    newBox.innerHTML =
+      products.slice(0,4).map(productCard).join("");
+
   }
 
-  if (color === "") {
-    alert("Please select Colour");
-    return;
+  if(menBox){
+
+    menBox.innerHTML =
+      products
+      .filter(p => p.category === "Men")
+      .map(productCard)
+      .join("");
+
   }
 
-  const existingItem = cart.find(function(item) {
-    return (
-      item.name === name &&
-      item.size === size &&
-      item.color === color
+  if(womenBox){
+
+    womenBox.innerHTML =
+      products
+      .filter(p => p.category === "Women")
+      .map(productCard)
+      .join("");
+
+  }
+
+  if(kidsBox){
+
+    kidsBox.innerHTML =
+      products
+      .filter(p => p.category === "Kids")
+      .map(productCard)
+      .join("");
+
+  }
+
+  updateCounts();
+
+}
+
+
+/* ================= PRODUCT DETAIL ================= */
+
+function openProduct(id){
+
+  const product =
+    products.find(p => p.id === id);
+
+  if(!product) return;
+
+  selectedSize = product.sizes[1] || product.sizes[0];
+  selectedColor = product.colors[0];
+
+  $("productDetails").innerHTML = `
+
+    <div class="detail">
+
+      <div class="detail-image">
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
+
+      </div>
+
+      <div class="detail-info">
+
+        <span class="eyebrow">
+          ${product.category} COLLECTION
+        </span>
+
+        <h2>${product.name}</h2>
+
+        <div class="detail-price">
+
+          <strong>${money(product.price)}</strong>
+
+          <span class="old-price">
+            ${money(product.oldPrice)}
+          </span>
+
+        </div>
+
+        <p>
+          Premium quality fashion designed for
+          comfort, confidence and everyday style.
+        </p>
+
+        <div class="option-title">
+          Select Size
+        </div>
+
+        <div class="options">
+
+          ${product.sizes.map(size => `
+
+            <button
+              class="${size === selectedSize ? "selected" : ""}"
+              onclick="selectSize(this,'${size}')">
+
+              ${size}
+
+            </button>
+
+          `).join("")}
+
+        </div>
+
+        <div class="option-title">
+          Select Colour
+        </div>
+
+        <div class="options">
+
+          ${product.colors.map(color => `
+
+            <button
+              class="${color === selectedColor ? "selected" : ""}"
+              onclick="selectColor(this,'${color}')">
+
+              ${color}
+
+            </button>
+
+          `).join("")}
+
+        </div>
+
+        <button
+          class="add-cart"
+          onclick="addToCart(${product.id})">
+
+          ADD TO CART — ${money(product.price)}
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  $("productModal").classList.add("show");
+
+}
+
+
+function selectSize(button,size){
+
+  selectedSize = size;
+
+  button
+    .parentElement
+    .querySelectorAll("button")
+    .forEach(b => b.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+}
+
+
+function selectColor(button,color){
+
+  selectedColor = color;
+
+  button
+    .parentElement
+    .querySelectorAll("button")
+    .forEach(b => b.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+}
+
+
+/* ================= CART ================= */
+
+function addToCart(id){
+
+  const product =
+    products.find(p => p.id === id);
+
+  if(!product) return;
+
+  const existing =
+    cart.find(item =>
+      item.id === id &&
+      item.size === selectedSize &&
+      item.color === selectedColor
     );
-  });
 
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
     cart.push({
-      name: name,
-      price: price,
-      size: size,
-      color: color,
-      quantity: 1
+
+      id:product.id,
+      name:product.name,
+      price:product.price,
+      image:product.image,
+      size:selectedSize,
+      color:selectedColor,
+      qty:1
+
     });
+
   }
 
-  updateCart();
+  saveData();
 
-  alert(name + " cart me add ho gaya!");
+  updateCounts();
+
+  closeModal("productModal");
+
+  openCart();
+
 }
 
-function increaseQuantity(index) {
-  if (cart[index]) {
-    cart[index].quantity += 1;
-    updateCart();
+
+function updateCartQty(index,change){
+
+  if(!cart[index]) return;
+
+  cart[index].qty += change;
+
+  if(cart[index].qty <= 0){
+
+    cart.splice(index,1);
+
   }
+
+  saveData();
+
+  renderCart();
+
+  updateCounts();
+
 }
 
-function decreaseQuantity(index) {
-  if (!cart[index]) return;
 
-  if (cart[index].quantity > 1) {
-    cart[index].quantity -= 1;
-  } else {
-    cart.splice(index, 1);
-  }
+function removeCartItem(index){
 
-  updateCart();
+  cart.splice(index,1);
+
+  saveData();
+
+  renderCart();
+
+  updateCounts();
+
 }
 
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCart();
-}
 
-function updateCart() {
-  const cartCount = document.getElementById("cartCount");
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
+function renderCart(){
 
-  if (!cartCount || !cartItems || !cartTotal) {
+  const box = $("cartItems");
+
+  if(!box) return;
+
+  if(cart.length === 0){
+
+    box.innerHTML = `
+
+      <div style="text-align:center;padding:60px 10px">
+
+        <div style="font-size:50px">🛍</div>
+
+        <h3>Your bag is empty</h3>
+
+        <p style="color:#888;margin-top:8px">
+          Add something you love.
+        </p>
+
+      </div>
+
+    `;
+
+    $("cartTotal").textContent = "₹0";
+
     return;
-  }
 
-  const totalQuantity = cart.reduce(function(total, item) {
-    return total + item.quantity;
-  }, 0);
-
-  cartCount.textContent = totalQuantity;
-
-  if (cart.length === 0) {
-    cartItems.innerHTML = "<p>Your cart is empty.</p>";
-    cartTotal.textContent = "0";
-    return;
   }
 
   let total = 0;
 
-  cartItems.innerHTML = cart.map(function(item, index) {
+  box.innerHTML = cart.map((item,index) => {
 
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
+    total += item.price * item.qty;
 
     return `
+
       <div class="cart-item">
-        <div>
-          <strong>${item.name}</strong><br>
-          Size: ${item.size}<br>
-          Colour: ${item.color}<br>
-          Price: ₹${item.price}
-        </div>
+
+        <img src="${item.image}" alt="${item.name}">
 
         <div>
-          <button type="button" onclick="decreaseQuantity(${index})">−</button>
 
-          <b>${item.quantity}</b>
+          <h4>${item.name}</h4>
 
-          <button type="button" onclick="increaseQuantity(${index})">+</button>
+          <p>
+            Size: ${item.size} · ${item.color}
+          </p>
 
-          <button type="button" onclick="removeFromCart(${index})">
-            Remove
-          </button>
+          <p>${money(item.price)}</p>
+
+          <div class="qty">
+
+            <button
+              onclick="updateCartQty(${index},-1)">
+              −
+            </button>
+
+            <span>${item.qty}</span>
+
+            <button
+              onclick="updateCartQty(${index},1)">
+              +
+            </button>
+
+          </div>
+
         </div>
+
+        <button
+          class="remove"
+          onclick="removeCartItem(${index})">
+
+          Remove
+
+        </button>
+
       </div>
+
     `;
 
   }).join("");
 
-  cartTotal.textContent = total;
+  $("cartTotal").textContent = money(total);
+
 }
 
-function toggleMenu() {
-  const nav = document.getElementById("nav");
 
-  if (nav) {
-    nav.classList.toggle("show");
+function openCart(){
+
+  renderCart();
+
+  $("cartDrawer").classList.add("show");
+  $("drawerOverlay").classList.add("show");
+
+}
+
+
+function closeCart(){
+
+  $("cartDrawer").classList.remove("show");
+  $("drawerOverlay").classList.remove("show");
+
+}
+
+
+/* ================= WISHLIST ================= */
+
+function toggleWishlist(id){
+
+  if(wishlist.includes(id)){
+
+    wishlist =
+      wishlist.filter(x => x !== id);
+
+  }else{
+
+    wishlist.push(id);
+
   }
+
+  saveData();
+
+  renderProducts();
+
+  updateCounts();
+
 }
 
-const orderForm = document.getElementById("orderForm");
 
-if (orderForm) {
+function openWishlist(){
 
-  orderForm.addEventListener("submit", async function(event) {
+  const liked =
+    products.filter(p => wishlist.includes(p.id));
 
-    event.preventDefault();
+  if(liked.length === 0){
 
-    if (cart.length === 0) {
-      alert("Pehle product cart me add karein.");
-      return;
-    }
+    alert("Your wishlist is empty.");
 
-    const customerName =
-      document.getElementById("customerName").value.trim();
+    return;
 
-    const mobile =
-      document.getElementById("mobile").value.trim();
+  }
 
-    const address =
-      document.getElementById("address").value.trim();
+  $("searchResults").innerHTML =
+    liked.map(productCard).join("");
 
-    const city =
-      document.getElementById("city").value.trim();
+  $("searchPanel").style.display = "block";
 
-    const pincode =
-      document.getElementById("pincode").value.trim();
+}
 
-    const paymentMethod =
-      document.getElementById("paymentMethod").value;
 
-    const total = cart.reduce(function(sum, item) {
-      return sum + item.price * item.quantity;
-    }, 0);
+/* ================= SEARCH ================= */
 
-    const orderId = "AF-" + Date.now();
+function openSearch(){
 
-    const orderData = {
-      order_id: orderId,
-      customer_name: customerName,
-      mobile: mobile,
-      address: address,
-      city: city,
-      pincode: pincode,
-      payment_method: paymentMethod,
-      items: cart,
-      total: total
-    };
+  $("searchPanel").style.display = "block";
 
-    const message = document.getElementById("orderMessage");
+  setTimeout(() => {
 
-    message.textContent = "Order submit ho raha hai...";
+    $("searchInput").focus();
 
-    try {
+  },100);
 
-      const response = await fetch(
-        API_BASE + "/api/orders",
+}
+
+
+function closeSearch(){
+
+  $("searchPanel").style.display = "none";
+
+}
+
+
+function searchProducts(){
+
+  const value =
+    $("searchInput").value
+      .trim()
+      .toLowerCase();
+
+  if(!value){
+
+    $("searchResults").innerHTML = "";
+
+    return;
+
+  }
+
+  const results =
+    products.filter(p =>
+      p.name.toLowerCase().includes(value) ||
+      p.category.toLowerCase().includes(value)
+    );
+
+  $("searchResults").innerHTML =
+    results.length
+      ? results.map(productCard).join("")
+      : "<p>No products found.</p>";
+
+}
+
+
+/* ================= COUNTS ================= */
+
+function updateCounts(){
+
+  const cartCount =
+    cart.reduce((sum,item) => sum + item.qty,0);
+
+  $("cartCount").textContent = cartCount;
+
+  $("wishlistCount").textContent =
+    wishlist.length;
+
+}
+
+
+/* ================= FILTER ================= */
+
+function filterCategory(category){
+
+  const filtered =
+    category === "all"
+      ? products
+      : products.filter(p => p.category === category);
+
+  $("newProducts").innerHTML =
+    filtered.map(productCard).join("");
+
+  window.scrollTo({
+
+    top:$("new").offsetTop - 80,
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function openCheckout(){
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty.");
+
+    return;
+
+  }
+
+  closeCart();
+
+  $("checkoutModal").classList.add("show");
+
+}
+
+
+async function placeOrder(event){
+
+  event.preventDefault();
+
+  if(cart.length === 0){
+
+    alert("Cart is empty.");
+
+    return;
+
+  }
+
+  const customerName =
+    $("customerName").value.trim();
+
+  const mobile =
+    $("mobile").value.trim();
+
+  const address =
+    $("address").value.trim();
+
+  const city =
+    $("city").value.trim();
+
+  const pincode =
+    $("pincode").value.trim();
+
+  const email =
+    $("email").value.trim();
+
+  const paymentMethod =
+    document.querySelector(
+      'input[name="paymentMethod"]:checked'
+    ).value;
+
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    alert("Please enter a valid 10 digit mobile number.");
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{6}$/.test(pincode)){
+
+    alert("Please enter a valid 6 digit pincode.");
+
+    return;
+
+  }
+
+
+  const orderId =
+    "AF-" + Date.now();
+
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum + item.price * item.qty,
+      0
+    );
+
+
+  const orderData = {
+
+    orderId,
+
+    customerName,
+
+    mobile,
+
+    email,
+
+    address,
+
+    city,
+
+    pincode,
+
+    paymentMethod,
+
+    items:cart,
+
+    total
+
+  };
+
+
+  const button =
+    event.submitter;
+
+  if(button){
+
+    button.disabled = true;
+    button.textContent = "PROCESSING...";
+
+  }
+
+
+  try{
+
+    const response =
+      await fetch(
+        `${API_BASE}/api/orders`,
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
+          method:"POST",
+
+          headers:{
+            "Content-Type":"application/json"
           },
-          body: JSON.stringify(orderData)
+
+          body:JSON.stringify(orderData)
         }
       );
 
-      const result = await response.json();
 
-      if (!response.ok) {
-        throw new Error(
-          result.error || "Order submit nahi hua"
-        );
-      }
+    const result =
+      await response.json();
 
-      message.textContent =
-        "✅ Order successfully place ho gaya! Order ID: " +
-        orderId;
 
-      alert(
-        "Order successfully place ho gaya!\n\nOrder ID: " +
-        orderId
+    if(!response.ok){
+
+      throw new Error(
+        result.message ||
+        "Order failed"
       );
 
-      cart = [];
-
-      updateCart();
-
-      orderForm.reset();
-
-    } catch (error) {
-
-      console.error(error);
-
-      message.textContent =
-        "❌ Order submit nahi hua. Please dobara try karein.";
-
-      alert(
-        "Order submit nahi hua. Please dobara try karein."
-      );
     }
 
-  });
+
+    cart = [];
+
+    saveData();
+
+    updateCounts();
+
+    closeModal("checkoutModal");
+
+    $("checkoutForm").reset();
+
+    alert(
+      `Order placed successfully!\n\nYour Order ID: ${orderId}`
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Order place nahi ho saka. Please try again."
+    );
+
+  }finally{
+
+    if(button){
+
+      button.disabled = false;
+      button.textContent = "PLACE ORDER →";
+
+    }
+
+  }
+
 }
 
-updateCart();
+
+/* ================= MODAL ================= */
+
+function closeModal(id){
+
+  $(id).classList.remove("show");
+
+}
 
 
+window.addEventListener("click",function(event){
+
+  document
+    .querySelectorAll(".modal")
+    .forEach(modal => {
+
+      if(event.target === modal){
+
+        modal.classList.remove("show");
+
+      }
+
+    });
+
+});
+
+
+/* ================= MOBILE ================= */
+
+function toggleMobileMenu(){
+
+  const nav =
+    $("navLinks");
+
+  nav.style.display =
+    nav.style.display === "flex"
+      ? "none"
+      : "flex";
+
+}
+
+
+/* ================= HOME ================= */
+
+function showHome(){
+
+  window.scrollTo({
+
+    top:0,
+    behavior:"smooth"
+
+  });
+
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+function subscribe(event){
+
+  event.preventDefault();
+
+  const email =
+    $("newsletterEmail").value;
+
+  alert(
+    `Thank you! ${email} is now subscribed to Anmol Fashion.`
+  );
+
+  event.target.reset();
+
+}
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    renderProducts();
+
+    renderCart();
+
+    updateCounts();
+
+  }
+);
