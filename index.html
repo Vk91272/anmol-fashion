@@ -1,589 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Anmol Fashion | Premium Style</title>
-  <meta name="description" content="Anmol Fashion - Style Jo Har Pal Saath De">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anmol Fashion | Online Fashion Store</title>
+<meta name="description" content="Anmol Fashion - Men's, Women's and Kids fashion. Style Jo Har Pal Saath De.">
+<link rel="stylesheet" href="style.css?v=20261001">
 </head>
-
 <body>
-
-<!-- ================= HEADER ================= -->
+<div class="topbar">🚚 Free Shipping on orders above ₹999 <span>Easy Returns · Secure Payments · 7 Day Returns</span></div>
 
 <header class="header">
-
-  <div class="topbar">
-    <div>Free Shipping on orders above ₹999</div>
-    <div>Easy Returns · Secure Payments</div>
+  <div class="header-main">
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <a href="#" class="logo" onclick="goHome();return false;"><span>ANMOL</span><b>FASHION</b></a>
+    <div class="search-wrap">
+      <input id="searchInput" type="search" placeholder="Search for shirts, jeans, kurtis, kids wear..." autocomplete="off">
+      <button id="searchBtn">🔍</button>
+    </div>
+    <div class="header-actions">
+      <button onclick="openAccount()">👤 <span>Account</span></button>
+      <button onclick="showOrders()">📦 <span>Orders</span></button>
+      <button class="cart-btn" onclick="openCart()">🛒 <span>Cart</span><em id="cartCount">0</em></button>
+    </div>
   </div>
-
-  <nav class="navbar">
-
-    <button class="menu-btn" onclick="toggleMobileMenu()">☰</button>
-
-    <a href="#" class="logo" onclick="showHome()">
-      <span>ANMOL</span>
-      <small>FASHION</small>
-    </a>
-
-    <div class="nav-links" id="navLinks">
-      <a href="#new">New Arrivals</a>
-      <a href="#men">Men</a>
-      <a href="#women">Women</a>
-      <a href="#kids">Kids</a>
-      <a href="#trending">Trending</a>
-    </div>
-
-    <div class="nav-actions">
-
-      <button onclick="openSearch()" title="Search">⌕</button>
-
-      <button onclick="openWishlist()" title="Wishlist">
-        ♡
-        <b id="wishlistCount">0</b>
-      </button>
-
-      <button onclick="openCart()" title="Cart">
-        🛍
-        <b id="cartCount">0</b>
-      </button>
-
-    </div>
-
+  <nav class="nav" id="nav">
+    <button class="all-btn" onclick="toggleCategories()">☰ All Categories</button>
+    <button onclick="filterCategory('all')">Home</button>
+    <button onclick="filterCategory('men')">Men</button>
+    <button onclick="filterCategory('women')">Women</button>
+    <button onclick="filterCategory('kids')">Kids</button>
+    <button onclick="filterCategory('new')">New Arrivals</button>
+    <button onclick="filterCategory('offers')">🔥 Offers</button>
   </nav>
+  <div class="category-menu" id="categoryMenu">
+    <button onclick="filterCategory('men')">Men's Fashion</button>
+    <button onclick="filterCategory('women')">Women's Fashion</button>
+    <button onclick="filterCategory('kids')">Kids Fashion</button>
+    <button onclick="filterCategory('new')">New Arrivals</button>
+  </div>
 </header>
 
-
-<!-- ================= SEARCH ================= -->
-
-<div class="search-panel" id="searchPanel">
-
-  <div class="search-inner">
-
-    <input
-      id="searchInput"
-      type="text"
-      placeholder="Search shirts, jeans, kurtis..."
-      oninput="searchProducts()"
-    >
-
-    <button onclick="closeSearch()">×</button>
-
-  </div>
-
-  <div id="searchResults"></div>
-
-</div>
-
-
-<!-- ================= MAIN ================= -->
-
-<main id="mainContent">
-
-
-<!-- HERO -->
-
+<main>
 <section class="hero">
-
   <div class="hero-content">
+    <span>ANMOL FASHION · NEW SEASON 2026</span>
+    <h1>Style Jo Har Pal<br><strong>Saath De.</strong></h1>
+    <p>Men, Women & Kids ke liye latest fashion — easy shopping, secure checkout aur fast delivery.</p>
+    <div><button class="primary" onclick="filterCategory('all')">Shop Now →</button><button class="outline" onclick="filterCategory('new')">New Arrivals</button></div>
+  </div>
+  <div class="hero-art"><div class="hero-card">ANMOL<br><small>STYLE EDIT</small></div></div>
+</section>
 
-    <span class="eyebrow">THE NEW SEASON 2026</span>
+<section class="quick-cats">
+  <button onclick="filterCategory('men')"><span>👔</span><b>Men</b><small>Shirts · Jeans · More</small></button>
+  <button onclick="filterCategory('women')"><span>👗</span><b>Women</b><small>Kurtis · Tops · More</small></button>
+  <button onclick="filterCategory('kids')"><span>🧒</span><b>Kids</b><small>T-Shirts · Dresses</small></button>
+  <button onclick="filterCategory('offers')"><span>🏷️</span><b>Offers</b><small>Best value picks</small></button>
+</section>
 
-    <h1>
-      Style that<br>
-      <em>feels like you.</em>
-    </h1>
-
-    <p>
-      Discover thoughtfully designed fashion
-      for every moment of your life.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#new" class="btn dark">Shop Collection</a>
-      <a href="#trending" class="btn light">Explore Trends</a>
+<section class="products-section" id="shop">
+  <div class="section-head">
+    <div><span>SHOP ANMOL</span><h2 id="sectionTitle">Featured Products</h2></div>
+    <div class="sort-wrap"><label>Sort:</label><select id="sortSelect"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="discount">Discount</option></select></div>
+  </div>
+  <div class="shop-layout">
+    <aside class="filters" id="filters">
+      <div class="filter-head"><b>Filters</b><button onclick="clearFilters()">Clear</button></div>
+      <label>Category</label>
+      <button class="filter-cat active" data-cat="all" onclick="filterCategory('all')">All Products</button>
+      <button class="filter-cat" data-cat="men" onclick="filterCategory('men')">Men</button>
+      <button class="filter-cat" data-cat="women" onclick="filterCategory('women')">Women</button>
+      <button class="filter-cat" data-cat="kids" onclick="filterCategory('kids')">Kids</button>
+      <label>Price</label>
+      <select id="priceFilter"><option value="all">Any price</option><option value="500">Under ₹500</option><option value="800">Under ₹800</option><option value="1000">Under ₹1,000</option></select>
+      <label>Size</label>
+      <div class="checks"><label><input type="checkbox" value="S"> S</label><label><input type="checkbox" value="M"> M</label><label><input type="checkbox" value="L"> L</label><label><input type="checkbox" value="XL"> XL</label></div>
+    </aside>
+    <div class="products-wrap">
+      <div class="results-line"><span id="resultCount">6 products</span><button class="filter-mobile" onclick="toggleFilters()">☷ Filters</button></div>
+      <div class="product-grid" id="productGrid"></div>
     </div>
-
   </div>
-
-  <div class="hero-image">
-
-    <img
-      src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
-      alt="Anmol Fashion"
-    >
-
-    <div class="hero-badge">
-      <span>ANMOL</span>
-      <strong>STYLE</strong>
-      <small>EST. 2026</small>
-    </div>
-
-  </div>
-
 </section>
 
-
-<!-- CATEGORY STRIP -->
-
-<section class="category-strip">
-
-  <a href="#men">
-    <span>01</span>
-    MEN
-    <small>Explore Collection →</small>
-  </a>
-
-  <a href="#women">
-    <span>02</span>
-    WOMEN
-    <small>Explore Collection →</small>
-  </a>
-
-  <a href="#kids">
-    <span>03</span>
-    KIDS
-    <small>Explore Collection →</small>
-  </a>
-
-  <a href="#new">
-    <span>04</span>
-    NEW
-    <small>Explore Collection →</small>
-  </a>
-
+<section class="benefits">
+  <div>🚚 <b>Free Shipping</b><small>Orders above ₹999</small></div>
+  <div>🔒 <b>Secure Payments</b><small>Safe checkout</small></div>
+  <div>↩️ <b>Easy Returns</b><small>7 day return policy</small></div>
+  <div>💬 <b>Support</b><small>WhatsApp assistance</small></div>
 </section>
-
-
-<!-- NEW ARRIVALS -->
-
-<section class="section" id="new">
-
-  <div class="section-heading">
-
-    <div>
-      <span class="eyebrow">JUST DROPPED</span>
-      <h2>New Arrivals</h2>
-    </div>
-
-    <button onclick="filterCategory('all')">
-      View All →
-    </button>
-
-  </div>
-
-  <div class="product-grid" id="newProducts"></div>
-
-</section>
-
-
-<!-- EDITORIAL -->
-
-<section class="editorial">
-
-  <div class="editorial-image">
-    <img
-      src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85"
-      alt="Fashion Collection"
-    >
-  </div>
-
-  <div class="editorial-content">
-
-    <span class="eyebrow">ANMOL EDIT</span>
-
-    <h2>
-      Dress for the<br>
-      <em>life you want.</em>
-    </h2>
-
-    <p>
-      Fashion isn't just what you wear.
-      It's how you show up, how you feel,
-      and how you express yourself.
-    </p>
-
-    <a href="#women" class="text-btn">
-      Discover The Edit →
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- MEN -->
-
-<section class="section" id="men">
-
-  <div class="section-heading">
-
-    <div>
-      <span class="eyebrow">FOR HIM</span>
-      <h2>Men's Collection</h2>
-    </div>
-
-    <button onclick="filterCategory('Men')">
-      Shop Men →
-    </button>
-
-  </div>
-
-  <div class="product-grid" id="menProducts"></div>
-
-</section>
-
-
-<!-- WOMEN -->
-
-<section class="section soft" id="women">
-
-  <div class="section-heading">
-
-    <div>
-      <span class="eyebrow">FOR HER</span>
-      <h2>Women's Collection</h2>
-    </div>
-
-    <button onclick="filterCategory('Women')">
-      Shop Women →
-    </button>
-
-  </div>
-
-  <div class="product-grid" id="womenProducts"></div>
-
-</section>
-
-
-<!-- TRENDING -->
-
-<section class="trending" id="trending">
-
-  <div class="trending-text">
-
-    <span class="eyebrow">MOST LOVED</span>
-
-    <h2>
-      Trending<br>
-      <em>right now.</em>
-    </h2>
-
-    <p>
-      Pieces people are loving this season.
-      Find your next favourite.
-    </p>
-
-    <a href="#new" class="btn dark">Shop Trending</a>
-
-  </div>
-
-  <div class="trending-image">
-
-    <img
-      src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85"
-      alt="Trending Fashion"
-    >
-
-  </div>
-
-</section>
-
-
-<!-- KIDS -->
-
-<section class="section" id="kids">
-
-  <div class="section-heading">
-
-    <div>
-      <span class="eyebrow">LITTLE STYLES</span>
-      <h2>Kids Collection</h2>
-    </div>
-
-    <button onclick="filterCategory('Kids')">
-      Shop Kids →
-    </button>
-
-  </div>
-
-  <div class="product-grid" id="kidsProducts"></div>
-
-</section>
-
-
-<!-- FEATURES -->
-
-<section class="features">
-
-  <div>
-    <span>01</span>
-    <h3>Free Shipping</h3>
-    <p>On orders above ₹999</p>
-  </div>
-
-  <div>
-    <span>02</span>
-    <h3>Secure Payments</h3>
-    <p>100% secure checkout</p>
-  </div>
-
-  <div>
-    <span>03</span>
-    <h3>Easy Returns</h3>
-    <p>7 day return policy</p>
-  </div>
-
-  <div>
-    <span>04</span>
-    <h3>Support</h3>
-    <p>We're here 24/7</p>
-  </div>
-
-</section>
-
-
-<!-- NEWSLETTER -->
-
-<section class="newsletter">
-
-  <span class="eyebrow">STAY IN STYLE</span>
-
-  <h2>
-    Get the latest<br>
-    <em>from Anmol.</em>
-  </h2>
-
-  <p>
-    New drops, exclusive offers and fashion inspiration.
-  </p>
-
-  <form onsubmit="subscribe(event)">
-
-    <input
-      type="email"
-      id="newsletterEmail"
-      placeholder="Your email address"
-      required
-    >
-
-    <button>JOIN US →</button>
-
-  </form>
-
-</section>
-
 </main>
 
-
-<!-- ================= PRODUCT MODAL ================= -->
-
-<div class="modal" id="productModal">
-
-  <div class="modal-box product-modal">
-
-    <button class="modal-close" onclick="closeModal('productModal')">×</button>
-
-    <div id="productDetails"></div>
-
-  </div>
-
-</div>
-
-
-<!-- ================= CART ================= -->
-
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
-
-<aside class="cart-drawer" id="cartDrawer">
-
-  <div class="drawer-header">
-
-    <div>
-      <span class="eyebrow">YOUR BAG</span>
-      <h2>Shopping Cart</h2>
-    </div>
-
-    <button onclick="closeCart()">×</button>
-
-  </div>
-
-  <div id="cartItems"></div>
-
-  <div class="cart-bottom">
-
-    <div class="subtotal">
-      <span>Subtotal</span>
-      <strong id="cartTotal">₹0</strong>
-    </div>
-
-    <p>Shipping calculated at checkout.</p>
-
-    <button class="checkout-btn" onclick="openCheckout()">
-      CHECKOUT →
-    </button>
-
-  </div>
-
-</aside>
-
-
-<!-- ================= CHECKOUT ================= -->
-
-<div class="modal" id="checkoutModal">
-
-  <div class="modal-box checkout-box">
-
-    <button class="modal-close" onclick="closeModal('checkoutModal')">×</button>
-
-    <span class="eyebrow">SECURE CHECKOUT</span>
-    <h2>Complete Your Order</h2>
-
-    <form onsubmit="placeOrder(event)" id="checkoutForm">
-
-      <div class="form-grid">
-
-        <input id="customerName" placeholder="Full Name" required>
-
-        <input
-          id="mobile"
-          placeholder="Mobile Number"
-          maxlength="10"
-          pattern="[0-9]{10}"
-          required
-        >
-
-      </div>
-
-      <input id="email" type="email" placeholder="Email Address">
-
-      <textarea id="address" placeholder="Full Address" required></textarea>
-
-      <div class="form-grid">
-
-        <input id="city" placeholder="City" required>
-
-        <input
-          id="pincode"
-          placeholder="Pincode"
-          maxlength="6"
-          pattern="[0-9]{6}"
-          required
-        >
-
-      </div>
-
-      <div class="payment-options">
-
-        <label>
-          <input type="radio" name="paymentMethod" value="COD" checked>
-          <span>
-            <strong>Cash on Delivery</strong>
-            <small>Pay when your order arrives</small>
-          </span>
-        </label>
-
-        <label>
-          <input type="radio" name="paymentMethod" value="UPI">
-          <span>
-            <strong>UPI Payment</strong>
-            <small>Google Pay / PhonePe / Paytm</small>
-          </span>
-        </label>
-
-      </div>
-
-      <button class="checkout-btn" type="submit">
-        PLACE ORDER →
-      </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
 <footer>
-
   <div class="footer-main">
-
-    <div class="footer-brand">
-
-      <div class="footer-logo">
-        ANMOL
-        <small>FASHION</small>
-      </div>
-
-      <p>Style Jo Har Pal Saath De.</p>
-
-      <p>
-        Premium fashion for Men, Women & Kids.
-      </p>
-
-    </div>
-
-    <div>
-      <h4>SHOP</h4>
-      <a href="#men">Men</a>
-      <a href="#women">Women</a>
-      <a href="#kids">Kids</a>
-      <a href="#new">New Arrivals</a>
-    </div>
-
-    <div>
-      <h4>HELP</h4>
-      <a href="#">Contact Us</a>
-      <a href="#">Shipping</a>
-      <a href="#">Returns</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-
-    <div>
-      <h4>CONTACT</h4>
-      <a href="tel:+919118183794">+91 9118183794</a>
-      <a href="mailto:yadavvinit416@gmail.com">
-        yadavvinit416@gmail.com
-      </a>
-      <span>Gorakhpur, Uttar Pradesh</span>
-    </div>
-
+    <div><a class="logo footer-logo" href="#">ANMOL <b>FASHION</b></a><p>Style Jo Har Pal Saath De.</p><p>Premium fashion for Men, Women & Kids.</p></div>
+    <div><h4>Shop</h4><button onclick="filterCategory('men')">Men</button><button onclick="filterCategory('women')">Women</button><button onclick="filterCategory('kids')">Kids</button></div>
+    <div><h4>Help</h4><button onclick="showOrders()">Track Order</button><button onclick="openAccount()">My Account</button><button onclick="openCart()">Cart</button></div>
+    <div><h4>Contact</h4><p>📞 +91 9118183794</p><p>✉ yadavvinit416@gmail.com</p><p>📍 Gorakhpur, Uttar Pradesh</p></div>
   </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 Anmol Fashion. All Rights Reserved.</span>
-    <span>Made with ♥ for fashion lovers.</span>
-  </div>
-
+  <div class="copyright">© 2026 Anmol Fashion. All Rights Reserved.</div>
 </footer>
 
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-<!-- MOBILE NAV -->
-
-<div class="mobile-nav">
-
-  <button onclick="showHome()">⌂<small>Home</small></button>
-
-  <button onclick="openSearch()">⌕<small>Search</small></button>
-
-  <button onclick="openWishlist()">♡<small>Wishlist</small></button>
-
-  <button onclick="openCart()">🛍<small>Cart</small></button>
-
+<div class="drawer cart-drawer" id="cartDrawer">
+  <div class="drawer-head"><h2>Shopping Cart</h2><button onclick="closeAll()">×</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-bottom"><div><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div><small>Shipping calculated at checkout.</small><button class="primary full" onclick="openCheckout()">CHECKOUT →</button></div>
 </div>
 
+<div class="modal" id="productModal"><div class="modal-box product-modal"><button class="close" onclick="closeAll()">×</button><div id="productDetail"></div></div></div>
 
-<script src="script.js"></script>
+<div class="modal" id="checkoutModal"><div class="modal-box checkout-box"><button class="close" onclick="closeAll()">×</button><h2>Complete Your Order</h2><p class="muted">Secure checkout · Cash on Delivery / UPI</p><div class="checkout-grid"><form id="checkoutForm">
+<label>Full Name<input id="customerName" required placeholder="Enter your name"></label>
+<label>Mobile Number<input id="customerMobile" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></label>
+<label>Email Address<input id="customerEmail" type="email" placeholder="Email address"></label>
+<label>Address<textarea id="customerAddress" required placeholder="House no., street, area"></textarea></label>
+<div class="two"><label>City<input id="customerCity" required value="Gorakhpur"></label><label>Pincode<input id="customerPincode" required maxlength="6" inputmode="numeric" placeholder="273001"></label></div>
+<div class="payment-options"><label><input type="radio" name="payment" value="COD" checked> <b>Cash on Delivery</b><small>Pay when your order arrives</small></label><label><input type="radio" name="payment" value="UPI"> <b>UPI Payment</b><small>Google Pay / PhonePe / Paytm</small></label></div>
+<button class="primary full" type="submit">PLACE ORDER →</button><div id="orderMessage"></div></form><aside class="order-summary"><h3>Order Summary</h3><div id="checkoutSummary"></div><hr><div class="sum"><span>Total</span><strong id="checkoutTotal">₹0</strong></div></aside></div></div></div>
 
+<div class="modal" id="accountModal"><div class="modal-box small-modal"><button class="close" onclick="closeAll()">×</button><h2>My Account</h2><p>Account features are being prepared. You can shop as a guest and track your order using your order ID.</p><button class="primary full" onclick="closeAll();showOrders()">Track My Order</button></div></div>
+
+<div class="modal" id="ordersModal"><div class="modal-box small-modal"><button class="close" onclick="closeAll()">×</button><h2>Track Order</h2><p class="muted">Enter your Anmol Fashion order ID.</p><input id="orderLookup" placeholder="Example: AF-123456789"><button class="primary full" onclick="lookupOrder()">CHECK ORDER</button><div id="orderResult"></div></div></div>
+
+<script src="script.js?v=20261001"></script>
 </body>
 </html>
