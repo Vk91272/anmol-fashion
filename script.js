@@ -98,6 +98,12 @@ async function placeOrder(e){
   const data=await r.json().catch(()=>({}));
   if(!r.ok)throw new Error(data.error||"Order could not be placed");
   localStorage.setItem("anmol_last_order",payload.orderId);
+  const loggedAccount=getAccount();
+  if(loggedAccount){
+   const customerOrders=JSON.parse(localStorage.getItem("anmol_customer_orders")||"[]");
+   if(!customerOrders.includes(payload.orderId)) customerOrders.unshift(payload.orderId);
+   localStorage.setItem("anmol_customer_orders",JSON.stringify(customerOrders));
+  }
   cart=[];saveCart();
   $("orderMessage").innerHTML=`<div class="message success-msg"><b>Order placed successfully!</b><br>Order ID: <strong>${data.orderId||payload.orderId}</strong></div>`;
   $("checkoutForm").reset();$("customerCity").value="Gorakhpur";renderCheckout();
@@ -129,3 +135,131 @@ $("checkoutForm").addEventListener("submit",placeOrder);
 $("overlay").addEventListener("click",closeAll);
 $("mobileMenu").addEventListener("click",()=>$("nav").classList.toggle("show"));
 updateCartCount();renderProducts();
+
+/* =========================
+   CUSTOMER ACCOUNT
+========================= */
+let accountMode = "login";
+
+function getAccount(){
+  try{return JSON.parse(localStorage.getItem("anmol_customer")||"null")}catch(e){return null}
+}
+
+async function hashPassword(password){
+  const data=new TextEncoder().encode(password);
+  const hash=await crypto.subtle.digest("SHA-256",data);
+  return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+function setAccount(account){localStorage.setItem("anmol_customer",JSON.stringify(account));}
+function clearAccount(){localStorage.removeItem("anmol_customer");}
+
+function openAccount(mode=null){
+  const account=getAccount();
+  if(account && !mode) renderAccountProfile();
+  else {accountMode=mode||"login";renderAccountAuth();}
+  show("accountModal");
+}
+
+function renderAccountAuth(){
+  $("accountContent").innerHTML=`
+    <h2 class="account-title">${accountMode==="login"?"Welcome Back":"Create Your Account"}</h2>
+    <p class="account-subtitle">${accountMode==="login"?"Login karke orders aur profile manage karein.":"Anmol Fashion par free account banayein."}</p>
+    <div class="account-tabs">
+      <button class="account-tab ${accountMode==="login"?"active":""}" onclick="accountMode='login';renderAccountAuth()">Login</button>
+      <button class="account-tab ${accountMode==="register"?"active":""}" onclick="accountMode='register';renderAccountAuth()">Register</button>
+    </div>
+    <form class="account-form" onsubmit="submitAccount(event)">
+      ${accountMode==="register"?`<label>Full Name<input id="accountName" required placeholder="Enter your full name"></label>`:""}
+      <label>Mobile Number<input id="accountMobile" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></label>
+      <label>Email Address<input id="accountEmail" type="email" required placeholder="you@example.com"></label>
+      <label>Password<input id="accountPassword" type="password" required minlength="6" placeholder="Minimum 6 characters"></label>
+      ${accountMode==="register"?`<label>Confirm Password<input id="accountConfirm" type="password" required minlength="6" placeholder="Re-enter password"></label>`:""}
+      <div id="accountMessage"></div>
+      <button class="primary full" type="submit">${accountMode==="login"?"LOGIN":"CREATE ACCOUNT"}</button>
+    </form>
+    <p class="account-note">Your account details are stored in this browser. For production multi-device login, a secure backend authentication system should be connected.</p>
+  `;
+}
+
+async function submitAccount(e){
+  e.preventDefault();
+  const mobile=$("accountMobile").value.trim();
+  const email=$("accountEmail").value.trim().toLowerCase();
+  const password=$("accountPassword").value;
+  const msg=$("accountMessage");
+  if(!/^\d{10}$/.test(mobile)){msg.innerHTML='<div class="auth-msg error">Enter a valid 10 digit mobile number.</div>';return;}
+  if(password.length<6){msg.innerHTML='<div class="auth-msg error">Password must be at least 6 characters.</div>';return;}
+  const passwordHash=await hashPassword(password);
+
+  if(accountMode==="register"){
+    const name=$("accountName").value.trim();
+    const confirm=$("accountConfirm").value;
+    if(!name){msg.innerHTML='<div class="auth-msg error">Enter your full name.</div>';return;}
+    if(password!==confirm){msg.innerHTML='<div class="auth-msg error">Passwords do not match.</div>';return;}
+    if(getAccount()){msg.innerHTML='<div class="auth-msg error">An account already exists in this browser. Please login.</div>';return;}
+    setAccount({name,mobile,email,passwordHash,createdAt:new Date().toISOString()});
+    prefillCheckout();
+    msg.innerHTML='<div class="auth-msg success">Account created successfully.</div>';
+    setTimeout(renderAccountProfile,500);
+    return;
+  }
+
+  const account=getAccount();
+  if(!account || account.mobile!==mobile || account.email!==email || account.passwordHash!==passwordHash){
+    msg.innerHTML='<div class="auth-msg error">Mobile, email or password is incorrect.</div>';return;
+  }
+  prefillCheckout();
+  msg.innerHTML='<div class="auth-msg success">Login successful.</div>';
+  setTimeout(renderAccountProfile,400);
+}
+
+function renderAccountProfile(){
+  const a=getAccount();
+  if(!a){accountMode="login";renderAccountAuth();return;}
+  const orders=JSON.parse(localStorage.getItem("anmol_customer_orders")||"[]");
+  $("accountContent").innerHTML=`
+    <h2 class="account-title">My Account</h2>
+    <p class="account-subtitle">Manage your Anmol Fashion profile.</p>
+    <div class="profile-head"><div class="profile-avatar">${escapeAccountHTML((a.name||"A").charAt(0).toUpperCase())}</div><div><h3>${escapeAccountHTML(a.name)}</h3><p>${escapeAccountHTML(a.email)}</p></div></div>
+    <div class="profile-grid">
+      <div class="profile-card"><span>Mobile</span><strong>${escapeAccountHTML(a.mobile)}</strong></div>
+      <div class="profile-card"><span>Orders on this browser</span><strong>${orders.length}</strong></div>
+    </div>
+    <div class="account-actions">
+      <button class="primary" onclick="closeAll();showOrders()">Track Order</button>
+      <button class="outline" onclick="closeAll();openCheckout()">Buy Products</button>
+      <button class="outline" onclick="logoutAccount()">Logout</button>
+    </div>
+    <p class="account-note">Tip: Checkout form me aapka saved name, mobile aur email automatically fill ho jayega.</p>
+  `;
+}
+
+function escapeAccountHTML(value){return String(value??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));}
+function logoutAccount(){clearAccount();toast("Logged out successfully");accountMode="login";renderAccountAuth();}
+function prefillCheckout(){
+  const a=getAccount();if(!a)return;
+  if($("customerName"))$("customerName").value=a.name||"";
+  if($("customerMobile"))$("customerMobile").value=a.mobile||"";
+  if($("customerEmail"))$("customerEmail").value=a.email||"";
+}
+
+const originalPlaceOrder=placeOrder;
+placeOrder=async function(e){
+  await originalPlaceOrder(e);
+  const msg=$("orderMessage");
+  if(msg && msg.textContent.includes("Order placed successfully")){
+    const a=getAccount();
+    if(a){
+      const id=localStorage.getItem("anmol_last_order");
+      const orders=JSON.parse(localStorage.getItem("anmol_customer_orders")||"[]");
+      if(id && !orders.includes(id)){orders.unshift(id);localStorage.setItem("anmol_customer_orders",JSON.stringify(orders));}
+    }
+  }
+};
+
+const _openCheckout=openCheckout;
+openCheckout=function(){_openCheckout();prefillCheckout();};
+
+// Restore saved account data into checkout when the page loads.
+setTimeout(prefillCheckout,0);

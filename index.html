@@ -121,7 +121,7 @@
 <div class="payment-options"><label><input type="radio" name="payment" value="COD" checked> <b>Cash on Delivery</b><small>Pay when your order arrives</small></label><label><input type="radio" name="payment" value="UPI"> <b>UPI Payment</b><small>Google Pay / PhonePe / Paytm</small></label></div>
 <button class="primary full" type="submit">PLACE ORDER →</button><div id="orderMessage"></div></form><aside class="order-summary"><h3>Order Summary</h3><div id="checkoutSummary"></div><hr><div class="sum"><span>Total</span><strong id="checkoutTotal">₹0</strong></div></aside></div></div></div>
 
-<div class="modal" id="accountModal"><div class="modal-box small-modal"><button class="close" onclick="closeAll()">×</button><h2>My Account</h2><p>Account features are being prepared. You can shop as a guest and track your order using your order ID.</p><button class="primary full" onclick="closeAll();showOrders()">Track My Order</button></div></div>
+<div class="modal" id="accountModal"><div class="modal-box account-box"><button class="close" onclick="closeAll()">×</button><div id="accountContent"></div></div></div>
 
 <div class="modal" id="ordersModal"><div class="modal-box small-modal"><button class="close" onclick="closeAll()">×</button><h2>Track Order</h2><p class="muted">Enter your Anmol Fashion order ID.</p><input id="orderLookup" placeholder="Example: AF-123456789"><button class="primary full" onclick="lookupOrder()">CHECK ORDER</button><div id="orderResult"></div></div></div>
 
