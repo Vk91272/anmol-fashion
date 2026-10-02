@@ -69,20 +69,33 @@ function validateOrder(b) {
 }
 
 function adminAuth(req, res) {
-  if (
-    process.env.ADMIN_KEY &&
-    req.header('x-admin-key') !== process.env.ADMIN_KEY
-  ) {
-    res.status(401).json({
-      error: 'Unauthorized'
-    });
+  const serverKey = String(process.env.ADMIN_KEY || '').trim();
+  const clientKey = String(req.header('x-admin-key') || '').trim();
 
-    return false;
+  if (!serverKey) {
+    console.error('ADMIN_KEY is missing on Render');
+
+    return res.status(500).json({
+      error: 'ADMIN_KEY is not configured on server'
+    });
+  }
+
+  if (!clientKey) {
+    return res.status(401).json({
+      error: 'Admin Key is required'
+    });
+  }
+
+  if (clientKey !== serverKey) {
+    console.error('Invalid admin key received');
+
+    return res.status(401).json({
+      error: 'Invalid Admin Key'
+    });
   }
 
   return true;
 }
-
 /* =========================
    CREATE ORDER
 ========================= */
