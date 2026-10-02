@@ -74,7 +74,8 @@ async function login() {
   message.textContent = "";
 
   if (!enteredKey) {
-    message.textContent = "Please enter your Admin Key.";
+   message.textContent = "Please enter your Admin Key.";
+
     input.focus();
     return;
   }
