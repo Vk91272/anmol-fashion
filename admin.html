@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anmol Fashion | Premium CRM</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="login" class="login">
+  <div class="login-card">
+    <div class="logo">AF</div><div class="brand">ANMOL <span>FASHION</span></div>
+    <div class="kicker">PRIVATE ADMIN WORKSPACE</div>
+    <h1>Welcome back.</h1>
+    <p>Manage your fashion business from one elegant command center.</p>
+    <input id="key" type="password" placeholder="Admin Key">
+    <button id="loginBtn">Enter CRM</button>
+    <small id="loginMsg"></small>
+  </div>
+</div>
+
+<div id="crm" class="hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><div class="logo sm">AF</div><div><b>ANMOL</b><span>FASHION</span></div></div>
+    <div class="menu-title">WORKSPACE</div>
+    <button class="nav active" data-page="dashboard">⌂ <span>Overview</span></button>
+    <button class="nav" data-page="orders">▤ <span>Orders</span></button>
+    <button class="nav" data-page="customers">◉ <span>Customers</span></button>
+    <div class="side-bottom">
+      <a href="index.html">← Storefront</a><button id="logout">↪ Logout</button>
+    </div>
+  </aside>
+
+  <main>
+    <header class="top">
+      <div><div class="kicker">ANMOL FASHION / CRM</div><h2 id="title">Overview</h2></div>
+      <div class="top-actions"><span class="live">● LIVE</span><button id="refresh">↻ Refresh</button></div>
+    </header>
+
+    <section id="dashboard" class="page">
+      <div class="hero">
+        <div><div class="gold">STYLE JO HAR PAL SAATH DE</div>
+        <h1>Your business,<br><em>beautifully managed.</em></h1>
+        <p>Orders, customers and fulfilment in one premium workspace.</p></div>
+        <div class="monogram">AF</div>
+      </div>
+      <div class="cards">
+        <article><label>Total Orders</label><strong id="ordersCount">—</strong><small>All orders</small></article>
+        <article><label>Total Sales</label><strong id="sales">—</strong><small>Gross order value</small></article>
+        <article><label>In Progress</label><strong id="pending">—</strong><small>Needs fulfilment</small></article>
+        <article><label>Delivered</label><strong id="delivered">—</strong><small>Completed orders</small></article>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h3>Latest Orders</h3><p>Most recent customer activity</p></div><button class="link" data-page="orders">View all →</button></div>
+      <div class="table-scroll"><table><thead><tr><th>Order</th><th>Customer</th><th>Value</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody id="recent"></tbody></table></div></div>
+    </section>
+
+    <section id="orders" class="page hidden">
+      <div class="section-head"><div><h3>Order Management</h3><p>Control fulfilment, courier and delivery information.</p></div><input id="search" placeholder="Search order, customer or mobile…"></div>
+      <div class="panel"><div class="table-scroll"><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody id="orderRows"></tbody></table></div></div>
+    </section>
+
+    <section id="customers" class="page hidden">
+      <div class="section-head"><div><h3>Customer Directory</h3><p>Customers collected from your order history.</p></div></div>
+      <div class="customer-grid" id="customerGrid"></div>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-box"><button id="close" class="close">×</button><div id="modalBody"></div></div></div>
+<script src="admin.js"></script>
+</body>
+</html>
