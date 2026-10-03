@@ -99,22 +99,19 @@ async function login() {
 
     await load();
 
-  } catch (error) {
+} catch (error) {
+  console.error("CRM LOGIN ERROR:", error);
 
-    console.error("CRM LOGIN ERROR:", error);
+  KEY = "";
+  sessionStorage.removeItem("af_admin_key");
 
-    KEY = "";
+  message.textContent =
+    error.message || "Unable to connect to CRM.";
 
-    sessionStorage.removeItem("af_admin_key");
-
-    message.textContent =
-      "Invalid Admin Key or API connection.";
-
-    button.disabled = false;
-    button.textContent = "Enter CRM";
-
-    input.focus();
-  }
+  button.disabled = false;
+  button.textContent = "Enter CRM";
+  input.focus();
+}
 }
 
 
