@@ -1,5 +1,4 @@
-const API = "https://anmol-fashion.onrender.com";
-
+const API = "https://anmol-fashion-1.onrender.com";
 let KEY = sessionStorage.getItem("af_admin_key") || "";
 let orders = [];
 
