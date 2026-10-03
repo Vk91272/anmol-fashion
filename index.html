@@ -5,5 +5,240 @@
 <main id="shop"><section class="heading"><div><span class="eyebrow">SHOP THE EDIT</span><h2>Curated for you</h2></div><div class="filters"><button class="filter active" data-cat="All">All</button><button class="filter" data-cat="Men">Men</button><button class="filter" data-cat="Women">Women</button><button class="filter" data-cat="Kids">Kids</button></div></section><div class="tools"><label>⌕ <input id="search" placeholder="Search products..."></label><select id="sort"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="new">Newest</option></select></div><div id="grid" class="grid"></div><div id="empty" class="empty hidden">No products found.</div></main>
 <section class="editorial"><div><span class="eyebrow">ANMOL PHILOSOPHY</span><h2>Premium doesn't have to be complicated.</h2><p>Wearable colours, refined fits and thoughtful details — fashion made to move with you.</p></div><div><strong>₹999+</strong><span>Free Shipping</span></div><div><strong>7 DAYS</strong><span>Easy Returns</span></div></section>
 <section class="tracking"><div><span class="eyebrow">ORDER CARE</span><h2>Track your order</h2><p>Enter your Anmol order ID.</p></div><form id="trackForm"><input id="trackId" required placeholder="AF12345678"><button class="btn dark">Track Order</button></form><div id="trackResult"></div></section>
+  <section class="founder-section">
+  <div class="founder-container">
+
+
+<div class="founder-content">
+  <span class="eyebrow">THE STORY BEHIND ANMOL FASHION</span>
+
+  <h2>
+    Meet the Founder
+    <span>Vineet Kumar Yadav</span>
+  </h2>
+
+  <p class="founder-intro">
+    Anmol Fashion was founded with a simple vision —
+    to make stylish, quality and affordable fashion accessible
+    to everyone.
+  </p>
+
+  <p>
+    With a passion for fashion and a focus on customer satisfaction,
+    <strong>Vineet Kumar Yadav</strong> started Anmol Fashion with
+    the goal of creating a trusted fashion brand where customers
+    can discover modern styles for Men, Women and Kids.
+  </p>
+
+  <div class="founder-signature">
+    <strong>Vineet Kumar Yadav</strong>
+    <span>Founder, ANMOL FASHION</span>
+  </div>
+
+  <div class="founder-values">
+    <div>
+      <b>01</b>
+      <span>Quality First</span>
+    </div>
+
+    <div>
+      <b>02</b>
+      <span>Customer Focus</span>
+    </div>
+
+    <div>
+      <b>03</b>
+      <span>Modern Fashion</span>
+    </div>
+  </div>
+</div>
+
+<div class="founder-card">
+  <div class="founder-avatar">VKY</div>
+
+  <div class="founder-card-text">
+    <span>FOUNDER &amp; VISIONARY</span>
+    <h3>Vineet Kumar Yadav</h3>
+    <p>
+      Building ANMOL FASHION with style, trust &amp; ambition.
+    </p>
+  </div>
+
+  <div class="founder-brand">
+    <strong>ANMOL</strong>
+    <span>FASHION</span>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<style>
+.founder-section {
+  padding: 90px 7%;
+  background: linear-gradient(135deg,#090909,#151515,#050505);
+  color: #fff;
+}
+
+.founder-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.founder-content h2 {
+  font-family: "Playfair Display",serif;
+  font-size: clamp(40px,5vw,64px);
+  line-height: 1.05;
+  margin: 15px 0 25px;
+}
+
+.founder-content h2 span {
+  display: block;
+  color: #d4af37;
+  font-size: .58em;
+  margin-top: 10px;
+}
+
+.founder-intro {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #eee;
+  max-width: 650px;
+}
+
+.founder-content > p:not(.founder-intro) {
+  color: #aaa;
+  line-height: 1.8;
+  max-width: 650px;
+}
+
+.founder-signature {
+  margin-top: 30px;
+  padding-left: 18px;
+  border-left: 3px solid #d4af37;
+}
+
+.founder-signature strong {
+  display: block;
+  font-size: 21px;
+}
+
+.founder-signature span {
+  color: #d4af37;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.founder-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.founder-values div {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.founder-values b {
+  color: #d4af37;
+}
+
+.founder-values span {
+  color: #ddd;
+  font-size: 13px;
+}
+
+.founder-card {
+  min-height: 430px;
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.02)
+  );
+  box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+
+.founder-avatar {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#f5d76e,#b8860b);
+  color: #111;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  box-shadow: 0 20px 60px rgba(212,175,55,.2);
+}
+
+.founder-card-text {
+  margin-top: 28px;
+}
+
+.founder-card-text > span {
+  color: #d4af37;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.founder-card-text h3 {
+  font-family: "Playfair Display",serif;
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.founder-card-text p {
+  color: #999;
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.founder-brand {
+  margin-top: 30px;
+}
+
+.founder-brand strong {
+  display: block;
+  letter-spacing: 6px;
+}
+
+.founder-brand span {
+  color: #d4af37;
+  font-size: 9px;
+  letter-spacing: 5px;
+}
+
+@media(max-width:800px) {
+  .founder-section {
+    padding: 65px 20px;
+  }
+
+  .founder-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .founder-card {
+    min-height: 400px;
+  }
+}
+</style>
+
 <footer><div><div class="brand"><span class="mark">A</span><span><b>ANMOL</b><small>FASHION</small></span></div><p>Style Jo Har Pal Saath De.</p></div><div><h4>Shop</h4><a onclick="filterCategory('Men')">Men</a><a onclick="filterCategory('Women')">Women</a><a onclick="filterCategory('Kids')">Kids</a></div><div><h4>Support</h4><a href="#shop">Shipping & Returns</a><a href="#track">Track Order</a><a href="mailto:yadavvinit416@gmail.com">Contact</a></div><div><h4>Contact</h4><p>Gorakhpur, Uttar Pradesh</p><p>+91 9118183794</p><p>yadavvinit416@gmail.com</p></div></footer>
 <div id="overlay" class="overlay hidden"></div><aside id="drawer" class="drawer"><div class="drawer-head"><h3 id="drawerTitle">Your Bag</h3><button onclick="closeDrawer()">×</button></div><div id="drawerBody"></div></aside><div id="modal" class="modal hidden"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div><script src="script.js"></script></body></html>
